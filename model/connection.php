@@ -1,7 +1,7 @@
 <?php
-$host     = "db31.grserver.gr";
-$username = "sdi1300202";
-$password = "sdi1300202!!!";
+$host     = "";
+$username = "";
+$password = "";
 
 $mysqli = new mysqli($host, $username, $password, $db_name);
 
