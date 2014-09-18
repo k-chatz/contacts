@@ -1,0 +1,85 @@
+
+$relatives = array(
+	"0" => array(
+					"21" => NULL,
+					"22" => NULL
+				) 
+	,
+	
+	"1" => array
+	(
+		"8" => array
+			(
+				"1" => array( "18" => NULL), 
+				"3" => NULL
+			),  
+			
+			
+		"9" => array
+			(
+				"10" => array( "4" => NULL ,"5" => NULL) , 
+				"12" => array( "6" => NULL ,"7" => NULL) , 
+				"20" => NULL
+			)
+	)
+	
+	,
+	
+	"2" => array
+	(
+		"16" => array
+			(
+				"9" => array( 
+							"18" => NULL,
+							"18" => NULL,
+							"18" => NULL
+				
+				), 
+				"10" => array( "18" => NULL), 
+				"20" => array( "18" => NULL) 
+
+				
+				
+				
+			), 
+			
+			
+		"17" => array
+			(
+				"10" => array( "4" => NULL ,"5" => NULL) , 
+				"12" => array( "6" => NULL ,"7" => NULL) , 
+				"20" => NULL
+			)
+	)	
+	
+	
+	
+
+);
+
+echo "<pre>";
+//print_r($relatives);
+echo "</pre>";
+
+
+
+
+<input type="button" name="btnDoRequest" value="Perform calculation" onclick="PerformCalculationWithImageProgress();" />
+<img src="/images/ajax-loader.gif" style="display: none;" id="imgProgress" />
+<script type="text/javascript">
+function PerformCalculationWithImageProgress()
+{
+        $("#imgProgress").show();
+        $.get("/tests/calc.php", function(data, textStatus)
+        {
+                $("#imgProgress").hide();
+                alert(data);
+        });
+}
+</script>
+
+
+
+
+
+
