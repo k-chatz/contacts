@@ -1,0 +1,50 @@
+/*Διεύθυνση--------------------------------------------------------------------------------------------------------*/
+
+div.newaddress{
+	margin: -5px 5px 15px 5px;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgba(31, 0, 255, 0.15);
+	border-radius: 0.3em;
+	background-color: rgba(13, 20, 48, 0.01);
+}
+
+.removeaddr{
+	float: right;
+}
+
+.streetnumber{
+	margin:-5px;
+	width:50px
+}
+
+#plusaddress{
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px 0px 0px 2px;
+	width: 23px;
+}
+
+div.addressbox{
+	margin:-15px 4px 5px 4px;
+	padding:5px;
+}
+
+.data{
+	width: 50%;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgba(31, 0, 255, 0.15);
+	background-color: rgba(13, 20, 48, 0.01);
+}
+
+.map{
+	width: 35%;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgba(31, 0, 255, 0.15);
+	background-color: rgba(13, 20, 48, 0.01);
+}
