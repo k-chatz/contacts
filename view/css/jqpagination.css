@@ -1,0 +1,77 @@
+.pagination {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.pagination a {
+  display: inline-block;
+  outline: none;
+  width: 40px;  
+  height: 35px;  
+  outline: none;  
+  vertical-align: middle;  
+  border: 1px solid;  
+  border-color: #242D3C;  
+  margin: 0px;
+  background-position: center;
+  background-repeat: space;
+  background-size: 60%;
+  background-color: rgba(165, 171, 176, 1)
+}
+
+.pagination input {
+  width: 25%;
+  height: 31px;
+  vertical-align: middle;
+  text-align: center; 
+  padding: 2px;  
+  background-color: rgba(165, 171, 176, 1);
+  border: 1px solid;  
+  border-color: #242D3C;
+  color: black;
+  font-size: 100%;  font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+}
+
+a.first.disabled {
+background-color: rgba(0, 0, 0, 0.1);
+}
+a.previous.disabled {
+background-color: rgba(0, 0, 0, 0.1);
+}
+a.next.disabled {
+background-color: rgba(0, 0, 0, 0.1);
+}
+a.last.disabled {
+background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* gigantic class for demo purposes */
+.gigantic.pagination {
+  margin: 30px 0; }
+
+.gigantic.pagination a {
+  height: 60px;
+  width: 60px;
+  font-size: 50px;
+  line-height: 50px; }
+
+.gigantic.pagination input {
+  width: 300px;
+  height: 60px;
+  font-size: 30px; }
+
+/* log element for demo purposes */
+.log {
+  display: none;
+  background-color: #EDEDED;
+  border: 1px solid #B4B4B4;
+  height: 300px;
+  width: 524px;
+  overflow: auto;
+  margin-left: 0;
+  list-style: none;
+  padding: 10px; }
+  .log li {
+    margin-top: 0;
+    margin-bottom: 5px; }

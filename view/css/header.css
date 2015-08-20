@@ -1,0 +1,64 @@
+div.header{
+/* color: #000000; */
+padding: 1px;
+background: -moz-linear-gradient(top, #8d949b 0%, #828c95 36%, #28343b 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8d949b), color-stop(36%,#828c95 ), color-stop(100%,#28343b));
+background: -webkit-linear-gradient(top, #8d949b 0%,#828c95 36%,#28343b 100%);
+background: -o-linear-gradient(top, #8d949b 0%,#828c95 36%,#28343b 100%);
+background: -ms-linear-gradient(top, #8d949b 0%,#828c95 36%,#28343b 100%);
+background: linear-gradient(to bottom, #040D17 0%,#152E42 36%,#050F1F 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d949b', endColorstr='#28343b',GradientType=0 );
+}
+
+.bar {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 11px;
+color: #fff;
+width: auto;
+height: 60px;
+position: relative;
+z-index: 99998;
+padding: 5px;
+text-align: right;
+}
+
+
+.bar a.btn {
+display: inline-block;
+padding: 0px 3px 0px 3px;
+font-size: 11px;
+letter-spacing: 1.8px;
+line-height: 26px;
+color: #FFFFFF;
+text-decoration: none;
+text-align: center;
+border: solid 1px rgba(255, 255, 255, 0);
+}
+
+.bar a.btn:hover{
+    border: solid 1px #52FF9F;
+    color: #52FF9F;
+} 
+
+.bar a.logo {
+display: block;
+float: left;
+border: none;
+text-decoration: none;
+}
+
+.bar a.logo img{
+width: 120px;
+height: 60px;
+}
+
+div.bar input {
+background-color: #527DCA;
+float: none;
+height: 20px;
+padding: 5px;
+color: #322B36;
+font-size: 120%;
+font-family: Arial Black;
+width: 158px;
+}

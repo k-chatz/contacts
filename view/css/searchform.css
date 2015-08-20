@@ -1,0 +1,20 @@
+#searchform {
+position: relative;
+overflow: hidden;
+}
+
+#searchform a {
+background: url(../images/search_icon.png) 0 2px no-repeat;
+width: 27px;
+height: 24px;
+display: block;
+position: absolute;
+right: 3px;
+top: 5px;
+cursor: pointer;
+}
+
+.clear 
+{
+	clear:both;
+}

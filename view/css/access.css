@@ -1,0 +1,59 @@
+.userform {
+color: white;
+background: #3E4D66;
+padding: 1px;
+}
+
+input[type="text"], input[type="password"]  ,input[type="email"]{
+	padding: 2px;
+	height: 35px;
+	width: 100%;
+	border: 1px inset;
+	border-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.4);
+	color: #60CB89;
+	font-size: 100%;
+	font-weight: bold;
+}
+
+#searchform > input[type="text"] {
+	color: #191919;
+    padding: 2px;
+    height: 35px;
+    width: 100%;
+    border: 1px inset;
+    border-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: 100%;
+    font-weight: bold;
+}
+
+input[type="reset"] {
+	width: 50%;
+	float: left;
+	margin: 3px 0px 0px 0px;
+}
+
+input[type="submit"]  {
+	width: 50%;
+	float: right;
+	margin: 3px 0px 0px 0px;
+}
+
+input[type="reset"] ,input[type="submit"]  {
+	height: 45px;
+	letter-spacing: 3px;
+	font-size: 100%;
+	font-weight: bold;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: rgba(255, 255, 255, 0.8);
+	border: 1px outset rgba(0, 0, 0, 0.4);
+	cursor: pointer;
+}
+
+input[type="reset"]:hover ,input[type="submit"]:hover  {
+	background-color: rgba(0, 0, 0, 0.3);
+	color: #52FF9F;
+	border: 1px outset rgba(0, 0, 0, 0.3);
+
+}

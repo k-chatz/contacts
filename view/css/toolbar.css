@@ -1,0 +1,66 @@
+.yui3-toolbar {
+margin: 0px;
+overflow: auto;
+min-height: 34px;
+background-color: rgb(48, 48, 48);
+border-bottom: 1px solid #0F0F1B;
+}
+
+.first-child {
+    margin-left: .2em;
+}
+
+.yui3-toolbar-button span {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    margin: 0px 0px 1px 1px;
+    *position: relative;    /* Necessary to get negative margins working in IE */
+    *left: -1px;
+}
+
+.yui3-toolbar-button span span {
+    display: inline-block;
+    *position: static;
+}
+
+.yui3-toolbar-button input {
+    border: none;
+    margin: 1px -1px 1px -2px;
+    padding: 4px 4px 4px 25px;
+    *overflow: visible; /* Remove superfluous padding for IE */
+    background: rgb(28, 29, 29) url(../images/icons.png) no-repeat;
+    height: 32px;
+    color: whitesmoke;
+    min-width: 70px;
+}
+
+#add-btn input {
+    background-position: 6px -97px;
+    *background-position: 4px -100px;
+}
+
+#edit-btn input {
+    background-position: 6px -73px;
+    *background-position: 4px -76px;
+}
+
+#print-btn input {
+    background-position: 5px -50px;
+    *background-position: 4px -52px;
+}
+
+#open-btn input {
+    background-position: 5px -25px;
+    *background-position: 4px -28px;
+}
+
+#delete-btn input {
+    background-position: 5px -121px;
+    *background-position: 4px -124px;
+}
+
+#save-btn input {
+    background-position: 5px -1px;
+    *background-position: 4px -4px;
+}

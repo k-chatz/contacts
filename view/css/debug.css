@@ -1,0 +1,75 @@
+.Debug1 {
+border-style: dashed;
+border-width: 1px;
+border-color: rgba(255, 255, 255, 0.1);
+background-color: rgba(23, 22, 21, 1);
+color: rgb(9, 142, 169);
+font-family: monospace;
+padding: 2px;
+margin: 0px;
+font-size: 130%;
+}
+
+
+.Debug2 {
+border-style: dashed;
+border-width: 1px;
+border-color: rgba(255, 255, 255, 0.1);
+background-color: rgba(23, 22, 21, 1);
+color: rgb(255, 114, 0);
+font-family: monospace;
+padding: 2px;
+margin: 0px;
+font-size: 130%;
+}
+
+.Query
+{
+display: none;
+}
+
+div.QSELECT{
+padding: 1px;
+border-top: 1px solid rgba(0, 0, 0, 1);
+border-bottom: 1px solid rgba(0, 0, 0, 1);
+color: black;
+background-color: #AEF2B0;
+overflow: auto;
+}
+
+div.QINSERT{
+padding: 1px;
+border-top: 1px solid rgba(0, 0, 0, 1);
+border-bottom: 1px solid rgba(0, 0, 0, 1);
+color: black;
+background-color: #FFBD87;
+overflow: auto;
+}
+
+div.QERROR{
+padding: 1px;
+border-top: 1px solid rgba(0, 0, 0, 1);
+border-bottom: 1px solid rgba(0, 0, 0, 1);
+color: black;
+background-color: #FD827D;
+overflow: auto;
+}
+
+pre.QRESULT{
+display: none;
+background-color: rgba(255, 255, 255, 0.5);
+color: rgb(0, 0, 0);
+padding: 5px;
+margin: 1px;
+}
+
+div.QSELECT div.close ,
+div.QINSERT div.close ,
+div.QERROR div.close
+{
+	float: inherit;
+	text-align: start;
+	margin: -1px;
+	padding: 5px;
+	border: 0px;
+}
