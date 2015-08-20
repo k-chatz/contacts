@@ -1,3 +1,0 @@
-# Contacts
-
-Organize contacts
