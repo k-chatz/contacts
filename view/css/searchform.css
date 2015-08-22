@@ -4,7 +4,7 @@ overflow: hidden;
 }
 
 #searchform a {
-background: url(../images/search_icon.png) 0 2px no-repeat;
+background: url(../icons/search_icon.png) 0 2px no-repeat;
 width: 27px;
 height: 24px;
 display: block;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="shortcut icon" href="view/images/group44.png" type="image/png">
+		<link rel="shortcut icon" href="view/icons/group44.png" type="image/png">
 		<title>Contacts</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />

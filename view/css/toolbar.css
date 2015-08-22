@@ -29,7 +29,7 @@ border-bottom: 1px solid #0F0F1B;
     margin: 1px -1px 1px -2px;
     padding: 4px 4px 4px 25px;
     *overflow: visible; /* Remove superfluous padding for IE */
-    background: rgb(28, 29, 29) url(../images/icons.png) no-repeat;
+    background: rgb(28, 29, 29) url(../icons/icons.png) no-repeat;
     height: 32px;
     color: whitesmoke;
     min-width: 70px;

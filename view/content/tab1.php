@@ -25,9 +25,9 @@ else
     <div class="page_loader">
         <?php include('view/animations/page_loader.php'); ?>
     </div>
-    <a href="#" class="first" data-action="first" style="background-image: url('view/images/previous2.png')" /></a>
-    <a href="#" class="previous" data-action="previous" style="background-image: url('view/images/left207.png')" ></a>
+    <a href="#" class="first" data-action="first" style="background-image: url('view/icons/previous2.png')" /></a>
+    <a href="#" class="previous" data-action="previous" style="background-image: url('view/icons/left207.png')" ></a>
     <input id="pagination_max" type="text" readonly="readonly" data-max-page="<?php echo $pages; ?>" />
-    <a href="#" class="next" data-action="next" style="background-image: url('view/images/right218.png')"></a>
-    <a href="#" class="last" data-action="last" style="background-image: url('view/images/next.png')"></a>
+    <a href="#" class="next" data-action="next" style="background-image: url('view/icons/right218.png')"></a>
+    <a href="#" class="last" data-action="last" style="background-image: url('view/icons/next.png')"></a>
 </div>

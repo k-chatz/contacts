@@ -1,6 +1,6 @@
 <div id="welcome">
 	<div id="WelcIMGdiv">
-		<img id="WelcIMG" height="55" alt="Welcome icon" src="view/images/welcome.png">
+		<img id="WelcIMG" height="55" alt="Welcome icon" src="view/icons/welcome.png">
 	</div>
 	<div id="WelcContentDiv">
 		Welcome to contacts app! <br />

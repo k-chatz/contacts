@@ -1,7 +1,7 @@
 <ul class="ultab">
-    <li id="#T1" class="litab" title="Επαφές"><img alt="logo" height="22" src="view/images/user91.png"/></li>
-    <li id="#T2" class="litab" title="Προσθήκη επαφής"><img alt="logo" height="22" src="view/images/user39.png"/></li>
-    <li id="#T3" class="litab" title="Αναζήτηση" ><img alt="logo" height="22" src="view/images/male226.png"/></li>
+    <li id="#T1" class="litab" title="Επαφές"><img alt="logo" height="22" src="view/icons/user91.png"/></li>
+    <li id="#T2" class="litab" title="Προσθήκη επαφής"><img alt="logo" height="22" src="view/icons/user39.png"/></li>
+    <li id="#T3" class="litab" title="Αναζήτηση" ><img alt="logo" height="22" src="view/icons/male226.png"/></li>
 </ul>
 <div class="clear"></div>
 <div class="content">

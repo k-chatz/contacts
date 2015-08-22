@@ -3,7 +3,7 @@ function put_person($pid, $sex, $name,$surname){
 ?><div class='Person'>														
 	<div id="pid<?php echo $pid; ?>" class="person_label">
 		<div class="person_label_icon">
-			<img height="22" alt="Person icon" src="view/images/<?php echo ($sex == "male") ? "businessman94.png" : "businessman94.png" ?>"/>
+			<img height="22" alt="Person icon" src="view/icons/<?php echo ($sex == "male") ? "businessman94.png" : "businessman94.png" ?>"/>
 		</div>
 		<div class="person_label_content">
 			<b>
@@ -39,7 +39,7 @@ function put_field( $icon , $value = "" )
 	if($value)
 	{ ?>
 		<div class="Person_Field_Icon" >
-			<img alt="Person field icon" src="view/images/<?php echo $icon ? $icon : "no_icon.png"; ?>" height="23">
+			<img alt="Person field icon" src="view/icons/<?php echo $icon ? $icon : "no_icon.png"; ?>" height="23">
 		</div>
 		<div class="Person_Field"><?php echo "<b>" . $value . "</b>"; ?></div>
 	<?php
@@ -50,7 +50,7 @@ function put_Separating( $icon , $value = "" )
 { ?>
 	<div class="Person_Separating_SubContent">
 		<div class="Person_SeparatingField_Icon">
-			<img alt="Separating icon" src="view/images/<?php echo $icon ? $icon : "no_icon.png"; ?>" height="24" >
+			<img alt="Separating icon" src="view/icons/<?php echo $icon ? $icon : "no_icon.png"; ?>" height="24" >
 		</div>
 		<div class="Person_SeparatingField"><?php echo $value ? $value : "&nbsp;"; ?></div>
 	</div>	
@@ -72,7 +72,7 @@ function put_info_for_person($person)
 				if (NULL != $person['photopath'])
 				{
 					//put_Separating( "camera44.png" , $person['photopath'] ); ?>
-					<div class="photo" style="background-image: url('view/images/<?php echo $person['photopath']; ?>');"></div>
+					<div class="photo" style="background-image: url('view/icons/<?php echo $person['photopath']; ?>');"></div>
 				<?php
 				}
 				?>
