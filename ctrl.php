@@ -7,8 +7,7 @@ ini_set('display_errors', '1');
 $microsecond = microtime(true);
 
 //Show or hide Queries for debugging
-if( isset($_GET['admin']) ) 
-	$_SESSION['admin'] = $_GET['admin'];
+if( isset($_GET['debug']) ) $_SESSION['debug'] = $_GET['debug'];
 
 //dump($_SESSION,"SESSION");
 

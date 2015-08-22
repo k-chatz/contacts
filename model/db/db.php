@@ -17,9 +17,8 @@ function resultToArray($result){
 }
 
 function Query($sql, $debug, $db_name = "contacts"){
-
     /*Show or hide queries*/
-    (isset( $_SESSION['admin'] ) && $_SESSION['admin'] == "xxx") ? $print = 1 : $print = 0;
+    (isset( $_SESSION['debug'] ) && $_SESSION['debug'] == "on") ? $print = 1 : $print = 0;
 
     /*Database connect*/
     include('connection.php');
@@ -74,6 +73,17 @@ function Query($sql, $debug, $db_name = "contacts"){
         return  $records;
 }
 
-include('sql_select.php');
-include('sql_insert.php');
-include('sql_update.php');
+include_once('select/select.php');
+include_once('select/sel_user.php');
+include_once('select/sel_phones.php');
+include_once('select/sel_persons.php');
+include_once('select/sel_addresses.php');
+
+include_once('insert/insert.php');
+include_once('insert/ins_user.php');
+include_once('insert/ins_phone.php');
+include_once('insert/ins_person.php');
+include_once('insert/ins_addresses.php');
+
+include_once('update/update.php');
+include_once('update/upt_user.php');

@@ -47,5 +47,4 @@ function client_ip(){
     return $ip;
 }
 
-include('relatives.php');
 ?>
