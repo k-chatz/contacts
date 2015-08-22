@@ -12,4 +12,6 @@ if ($mysqli->connect_errno) {
 }
 else
 	$mysqli->query("SET NAMES utf8");
+
+//dump( $mysqli ,"mysqli");
 ?>
