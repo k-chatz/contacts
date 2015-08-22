@@ -1,22 +1,17 @@
 <?php
-if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
-
+if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']){
 	update_field_from_table( "users" , "lastactive" , "'Logout'" , "userid" , $userid );
+	update_confid( $userid , md5(mt_rand()) );
 
-	$_SESSION['info']  = "<b>logout.php:</b><br />Now, you are disconnected from the system.";
-	$_SESSION['isLoggedIn'] = 0;
+	$_SESSION['info'] = "<b>logout.php:</b><br />Now, you are disconnected from the system.";
 	unset($_SESSION['userid']);
+	unset($_SESSION['timeout']);
 	unset($_SESSION['username']);
-	unset($_SESSION['isLoggedIn']); 
+	unset($_SESSION['isLoggedIn']);
+	unset($_SESSION['becomeLogin']);
 	unset($_SESSION['REMOTE_ADDR']);
 	unset($_SESSION['HTTP_USER_AGENT']);
-	
-	$userid 	 = 0;
-	$username	 = 0;
-	$becomeLogin = 0;
-	$isLoggedIn	 = 0;
-} else
+}else{
 	$_SESSION['warning'] = "<b>logout.php:</b><br />Already offline!";
-	
-//session_destroy();
+}
 ?>

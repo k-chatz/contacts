@@ -13,15 +13,15 @@ $relation = "";
 			switch ($ccl)
 			{
 				case 1:
-					$relation = $gender == "male" ? "Γιός" : "Κόρη"; 
+					$relation = $gender == "male" ? "Son" : "Daughter"; 
 				break;
 				
 				case 2:
-					$relation = $gender == "male" ? "Εγγονός" : "Εγγονή"; 
+					$relation = $gender == "male" ? "Grandson" : "Granddaughter"; 
 				break;
 				
 				case 3:
-					$relation = $gender == "male" ? "Δισέγγονος" : "Δισέγγονη"; 	
+					$relation = $gender == "male" ? "Great grandchild" : "Great-granddaughter"; 	
 				break;
 				
 				case 4:
@@ -29,15 +29,15 @@ $relation = "";
 			}
 		break;
 		case 1:
-			$relation = $gender == "male" ? "Πατέρας" : "Μητέρα"; 
+			$relation = $gender == "male" ? "Father" : "Mother"; 
 			if($ccl)
 				switch ($ccl)
 				{
 					case 1:
-						$relation = $gender == "male" ? "Αδερφός" : "Αδερφή"; 
+						$relation = $gender == "male" ? "Brother" : "Sister"; 
 					break;
 					case 2:
-						$relation = $gender == "male" ? "Ανιψιός" : "Ανιψιά"; 
+						$relation = $gender == "male" ? "Nephew" : "Niece"; 
 					break;
 					case 3:				
 						$relation = $gender == "male" ? "...." : "...."; 				
@@ -48,15 +48,15 @@ $relation = "";
 				}
 		break;
 		case 2:
-			$relation = $gender == "male" ? "Παππούς" : "Γιαγιά"; 
+			$relation = $gender == "male" ? "Grandfather" : "Grandmother"; 
 			if($ccl)
 				switch ($ccl)
 				{
 					case 1:
-						$relation = $gender == "male" ? "Θείος" : "Θεία"; 
+						$relation = $gender == "male" ? "Uncle" : "Aunt"; 
 					break;
 					case 2:
-						$relation = $gender == "male" ? "Ξάδερφος" : "Ξαδέρφη"; 
+						$relation = $gender == "male" ? "Cousin" : "Cousin"; 
 					break;
 					case 3:				
 						$relation = $gender == "male" ? "...." : "...."; 				
@@ -69,7 +69,6 @@ $relation = "";
 	}
 return $relation;
 }
-
 
 //TODO Όταν ο χρήστης προσθέτει μια επαφή αν βάζει γονείς, σε αυτούς που έβαλε ότι τους έχει γονείς θα πρέπει να
 //ενημερώνεται το πεδίο τους number_of_childs.
@@ -130,17 +129,14 @@ function front_flashback_relatives( &$array, $person, $cpl = 0, &$stack )
 		
 		++$cpl;
 		front_flashback_relatives( $array[ 'motherid' ] , $root[ 0 ] , $cpl , $stack); //Αριστερό υποδένρο.
-		--$cpl;
+		//--$cpl;
 		
-		++$cpl;
+		//++$cpl;
 		front_flashback_relatives( $array[ 'fatherid' ] , $root[ 1 ] , $cpl , $stack); //Δεξί υποδένρο.
 		--$cpl;
 		
 	}
 }
-
-
-
 
 
 function create_array( &$array , $person , $lpl , $cpl )
@@ -157,30 +153,6 @@ function create_array( &$array , $person , $lpl , $cpl )
 	$relation = get_relation_string( $person['sex'] , $cpl );
 	echo "<p class='Debug2'>L:[0][".$cpl."]|ID:".$person['personid']."|".$relation."|=> ".$person['name']." ".$person['surname']."</p>";
 
-	
-	
 	//$tmp = &$array[ $person['personid'] ];
 }
-
-
-function reccall($cat_id) 
-{
-	$sql = "SELECT a.* FROM cat_master WHERE parent_id = $cat_id ORDER BY id ASC "; 
-	$result = mysql_query($sql) or die("Could not fetech Recursively");
-	
-	while($row = mysql_fetch_object( $result ) ) 
-	{
-		$recArray[$no]['main']['value'] = mysql_real_escape_string($row->value);
-		$recArray[$no]['main']['id'] = $row->id;
-		$recArray[$no]['child'] = reccall($row->id);
-		++$no;
-	}
-	
-	return $recArray; 
- } 
-
-
-
-
-
 ?>

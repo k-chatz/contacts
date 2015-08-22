@@ -59,7 +59,6 @@ function put_Separating( $icon , $value = "" )
 
 function put_info_for_person($person)
 {
-	//if exists file... 
 	?>
 		<div class="Person_content">
 			<div class="Person_Category_Container">
@@ -87,7 +86,7 @@ function put_phones_for_person($personid)
 	if (NULL != $Records = get_phones(0, $personid))
 	{
 	?><div class="Person_content"><?php
-			put_Separating( "phone45.png" , "Τηλέφωνα:" );
+			put_Separating( "phone45.png" , "Phones:" );
 			foreach ($Records as $Record)
 			{
 				switch ($Record['type'])
@@ -132,7 +131,7 @@ function put_comments_for_person($comments = "")
 	if($comments != "")
 	{?>
 		<div class='Person_content'><?php
-			put_Separating( "comments1.png" , "Σημειώσεις:" ); 
+			put_Separating( "comments1.png" , "Comments:" ); 
 			put_field( "comments1.png" , $comments );
 	?>	</div> <?php
 	}

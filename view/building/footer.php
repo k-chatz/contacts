@@ -3,7 +3,7 @@
 			<b>Contacts | Designed for mobile</b>
 			<br />
 			<div id="credits">Script complete time: <?php
-				echo $microsecond;
+				echo number_format(microtime(true) - $ms, 2);
 				?>'', Queries:
 				<?php
 				if (isset($_SESSION['Queries'])) {

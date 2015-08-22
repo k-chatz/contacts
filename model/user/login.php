@@ -28,6 +28,7 @@ if (isset($_POST['user']) && !empty($_POST['user']) && isset($_POST['userpass'])
         //$_SESSION['confid'] =  $_POST['confid'];
 
 		update_confid( $userid , $_POST['confid'] );
+
         if (NULL != exists_password($userid, $userpass))
         {
             switch ($Records[0]['active'])

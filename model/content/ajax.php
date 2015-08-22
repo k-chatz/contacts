@@ -1,10 +1,12 @@
 <?php
+$ms = microtime(true);
+
+/*Force display errors/warnings*/
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-//$ms = microtime(true);
-
 session_start();
+
 include_once('../db/db.php');
 include_once('../model.php');
 include_once('../debug.php');
@@ -13,10 +15,11 @@ include_once('../../view/alerts.php');
 
 $ip = client_ip();
 
-$isLoggedIn = isset($_SESSION['isLoggedIn'])? $_SESSION['isLoggedIn']	: 0;
 $userid 	= isset($_SESSION['userid'])	? $_SESSION['userid'] 		: 0;
 $username 	= isset($_SESSION['username'])	? $_SESSION['username']		: 0;
 $confid 	= isset($_POST['cnf'])			? trim($_POST['cnf'] )		: 0;
+$timeout	= isset($_SESSION['timeout']) 	? $_SESSION['timeout']		: 0;
+$isLoggedIn = isset($_SESSION['isLoggedIn'])? $_SESSION['isLoggedIn']	: 0;
 
 //dump($_SESSION,"SESSION");
 //dump($_POST,"POST");
@@ -24,7 +27,7 @@ $confid 	= isset($_POST['cnf'])			? trim($_POST['cnf'] )		: 0;
 //dump($username,"username");
 //dump($confid,"confid");
 
-if($isLoggedIn && $userid && $Records = user_is_online( $userid , $username , $confid , $ip , $_SERVER['HTTP_USER_AGENT'] , 5 ) ){
+if($isLoggedIn && $userid && $Records = user_is_online( $userid , $username , $confid , $ip , $_SERVER['HTTP_USER_AGENT'] , $timeout)){
 	update_user_status($userid, $isLoggedIn, $ip , $_SERVER['HTTP_USER_AGENT'] );
 	//dump($_SERVER,"SERVER");
 	$action 	= isset($_POST['act'])	? $_POST['act'] : 0;
@@ -46,21 +49,16 @@ if($isLoggedIn && $userid && $Records = user_is_online( $userid , $username , $c
 		default:
 		    alert("<b>ajax.php:</b><br />Err::Ajax.php:No action here","warning");
 	}
-	//$ms = microtime(true) - $ms;
-	//$ms = number_format($ms, 2);
+	$ms = number_format( microtime(true) - $ms , 2);
 	//script_complete_time( $ms );
 }
 else
 {
 	//header("HTTP/1.0 400 Bad Request");
 	alert("<b>ajax.php:</b><br />Session expired, <a href='index.php?p=login' title='System Login'>login</a> again!","warning");
-
-	$_SESSION['isLoggedIn'] = 0;
 	unset($_SESSION['userid']);
 	unset($_SESSION['username']);
-	unset($_SESSION['isLoggedIn']); 
-	unset($_SESSION['REMOTE_ADDR']);
-	unset($_SESSION['HTTP_USER_AGENT']);
-	}
+	unset($_SESSION['isLoggedIn']);
+}
 	unset($_SESSION['Queries']);
 ?>
