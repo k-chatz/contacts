@@ -25,7 +25,7 @@ function exists_relationtype($reltype) {
 	return $Result[0]['reltypeid'];
 }
 
-function get_relationtypes_for_user($userid = 0) {
+function get_relationtypes($userid = 0) {
 	if ($userid)
 		return Query("SELECT DISTINCT reltypes.reltype
 		FROM relations AS UsersToPersons,persons,relations AS PersonsToPersons,relations_reltype,reltypes

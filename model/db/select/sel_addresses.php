@@ -29,7 +29,7 @@ function exists_streetnum($relationid, $streetnum) {
 	return Query("SELECT * FROM `streetsnum` WHERE `relationid` = '" . $relationid . "' AND `streetnum` = '" . $streetnum . "'", debug_backtrace());
 }
 
-function exists_address_for_user($countryid, $regionid, $cityid, $locationid, $comments, $streets, $numbers, $userid) 
+function exists_address($countryid, $regionid, $cityid, $locationid, $comments, $streets, $numbers, $userid) 
 {
 	$exists = 0;
 
@@ -81,7 +81,7 @@ function exists_street_of_address($addressid, $street) {
 	return $Result[0]['relationid'];
 }
 
-function get_countries_for_user($countryid = "", $userid = 0) {
+function get_countries($countryid = "", $userid = 0) {
 	if ($countryid)
 		return Query("SELECT `country` FROM `countries` WHERE `countryid` = " . $countryid . "", debug_backtrace());
 	else if ($userid)
@@ -103,7 +103,7 @@ function get_countries_for_user($countryid = "", $userid = 0) {
 		return NULL;
 }
 
-function get_cities_for_user($cityid = "", $userid = 0) {
+function get_cities($cityid = "", $userid = 0) {
 	if ($cityid)
 		return Query("SELECT `city` FROM `cities` WHERE `cityid` = " . $cityid . "", debug_backtrace());
 	else if ($userid)
@@ -125,7 +125,7 @@ function get_cities_for_user($cityid = "", $userid = 0) {
 		return NULL;
 }
 
-function get_regions_for_user($regionid = "", $userid = 0) {
+function get_regions($regionid = "", $userid = 0) {
 	if ($regionid)
 		return Query("SELECT `region` FROM `regions` WHERE `regionid` = " . $regionid . "", debug_backtrace());
 	else if ($userid)
@@ -147,7 +147,7 @@ function get_regions_for_user($regionid = "", $userid = 0) {
 		return NULL;
 }
 
-function get_locations_for_user($locationid = 0, $userid = 0) {
+function get_locations($locationid = 0, $userid = 0) {
 	if ($locationid)
 		return Query("SELECT `location` FROM `locations` WHERE `locationid` = " . $locationid . "", debug_backtrace());
 	else if ($userid)
@@ -171,7 +171,7 @@ function get_locations_for_user($locationid = 0, $userid = 0) {
 		return NULL;
 }
 
-function get_streets_for_user($userid) {
+function get_streets($userid) {
 	if ($userid)
 		return Query("SELECT DISTINCT streets.streetid,streets.street
 		FROM relations AS RELUSERS,relations AS RELADDRESSES,relations,streets

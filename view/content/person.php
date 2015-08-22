@@ -2,7 +2,7 @@
 
 include('../../model/content/relatives.php');
 
-if( NULL != $records = get_person_for_user( $userid , $personid )){
+if( NULL != $records = get_person( $userid , $personid )){
 	if( $records[0]['birthday'] || $records[0]['photopath'] )
 	put_info_for_person($records[0]);
 	put_phones_for_person($records[0]['personid']);

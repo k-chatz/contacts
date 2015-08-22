@@ -25,7 +25,7 @@ if ( isset($_GET['id']) && isset($_GET['user']) && isset($_GET['active']))
 				break;
 			default;
 				echo "<br />default<br />";
-				if (exists_activecode_for_user($_GET['user'], $_GET['active']))
+				if (exists_activecode($_GET['user'], $_GET['active']))
 				{
 					activate_user($_GET['user'], $_GET['active']);
 					$_SESSION['info'] = "<b>activation.php:</b><br />User account <b>'" . $_GET['user'] . "'</b> successfully activated!, now you can use your username and password to login.";

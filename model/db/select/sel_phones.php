@@ -1,5 +1,5 @@
 <?php
-function exists_phone_for_user($phone, $userid) {
+function exists_phone($phone, $userid) {
 	if ($userid) {
 		$Result = Query("SELECT `phoneid` FROM `phones` WHERE `phone` = '" . $phone . "'", debug_backtrace());
 		return $Result[0]['phoneid'];
@@ -36,7 +36,7 @@ function get_phones( $userid = 0 , $personid = 0) {
 		return 0;
 }
 
-function get_phonetypes_for_user($userid = 0) {
+function get_phonetypes($userid = 0) {
 	if ($userid)
 		return Query("SELECT DISTINCT phones.phonetype
 		FROM relations AS RELUSERS,phones,relations AS RELPHONES

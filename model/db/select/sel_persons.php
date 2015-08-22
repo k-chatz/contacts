@@ -1,5 +1,5 @@
 <?php
-function get_names_for_user($userid) {
+function get_names($userid) {
 	if ($userid)
 		return Query("SELECT DISTINCT persons.`name`
 		FROM persons
@@ -9,7 +9,7 @@ function get_names_for_user($userid) {
 		return 0;
 }
 
-function get_surnames_for_user($userid) {
+function get_surnames($userid) {
 	if ($userid)
 		return Query("SELECT DISTINCT persons.`surname`
 		FROM persons
@@ -71,14 +71,14 @@ function get_result_for_persons( $userid = 0 , $items = 1 , $page = 1 ) {
 }
 
 			
-function get_person_for_user( $userid = 0 , $personid = 0 ) {
+function get_person( $userid = 0 , $personid = 0 ) {
 	if ($userid)
 			return Query("SELECT * FROM persons WHERE persons.userid = ". $userid ." AND persons.personid = ". $personid ." ", debug_backtrace());
 	else
 		return NULL;
 }
 
-function exists_person_for_user( $name, $surname, $sex, $birthday, $acquaintance, $userid = 0) {
+function exists_person( $name, $surname, $sex, $birthday, $acquaintance, $userid = 0) {
 	if ($userid) {
 		$Result = Query("SELECT `personid` 
 		FROM persons
@@ -112,7 +112,7 @@ function exists_alias($alias) {
 	return $aliasid = $Result[0]['aliasid'];
 }
 
-function get_person_count_for_user( $userid = 0 ){
+function get_person_count( $userid = 0 ){
 	if ( $userid ){
 		$Result = Query("SELECT COUNT(*) AS count
 		FROM persons

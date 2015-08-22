@@ -1,6 +1,6 @@
 <?php
 $items = get_option( "items_per_page", $userid );
-$contacts = get_person_count_for_user( $userid );
+$contacts = get_person_count( $userid );
 $pages = ($contacts ? $contacts : 1) / ($items ? $items : 20);
 
 if (!$pages) $pages = 1;

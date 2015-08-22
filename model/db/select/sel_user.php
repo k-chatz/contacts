@@ -32,7 +32,7 @@ function exists_user($userid,$username)
 	return NULL;
 }
 
-function exists_password_for_user($userid, $userpass) {
+function exists_password($userid, $userpass) {
 	if($userid && $userpass)
 		return Query("SELECT userid FROM users
 		WHERE userid = '".$userid."' AND userpass = '".$userpass."'", debug_backtrace());
@@ -40,7 +40,7 @@ function exists_password_for_user($userid, $userpass) {
 		return NULL;
 }
 
-function exists_activecode_for_user($username, $active) {
+function exists_activecode($username, $active) {
 	if ($username) {
 		return Query("SELECT userid FROM users 
 		WHERE username = '".$username."' AND active = '".$active."'", debug_backtrace());
