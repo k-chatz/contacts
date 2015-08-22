@@ -129,27 +129,14 @@ function get_function_args($debug)
 	return $string;
 }
 
-function script_complete_time( $ms = 0 )
-{
-	if( $ms )
-	{
-		?>
-			<br />
-			<sub>Script complete time: <?php echo $ms; ?>'', Queries:
-				<?php
-				if (isset($_SESSION['Queries']))
-				{
-					echo $_SESSION['Queries'];
-					unset($_SESSION['Queries']);
-				}
-				else
-					echo "0";
-				?>
-			</sub>
-		<?php
-	}
-	else
-		return NULL;
+function script_complete_time( $ms = 0 ){
+$queries = isset($_SESSION['Queries']) ? $_SESSION['Queries'] : 0;
+	?>
+		<div class="scriptTime"><b>
+			Script complete time: <?php echo $ms; ?>'', 
+			Queries: <?php echo $queries; ?></b>
+		</div>
+	<?php
 }
 
 ?>

@@ -49,8 +49,6 @@ if($isLoggedIn && $userid && $Records = user_is_online( $userid , $username , $c
 		default:
 		    alert("<b>ajax.php:</b><br />Err::Ajax.php:No action here","warning");
 	}
-	$ms = number_format( microtime(true) - $ms , 2);
-	//script_complete_time( $ms );
 }
 else
 {
@@ -60,5 +58,11 @@ else
 	unset($_SESSION['username']);
 	unset($_SESSION['isLoggedIn']);
 }
+	$ms = number_format( microtime(true) - $ms , 2);
+
+	if($_SESSION['debug']){
+		script_complete_time($ms);
+	}
+
 	unset($_SESSION['Queries']);
 ?>
