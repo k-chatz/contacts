@@ -77,9 +77,8 @@ div.QERROR div.close
 div.scriptTime {
 	border: 3px black;
     border-style: double;
-    background-color: #F90F0F;
+    background-color: #FFB530;
     color: black;
     margin: 1px 0px 1px 0px;
     padding: 1px;
-    font: small-caption;
 }

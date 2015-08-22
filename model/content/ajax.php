@@ -60,7 +60,7 @@ else
 }
 	$ms = number_format( microtime(true) - $ms , 2);
 
-	if($_SESSION['debug']){
+	if($_SESSION['debug'] == "on"){
 		script_complete_time($ms);
 	}
 
