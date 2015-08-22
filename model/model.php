@@ -36,9 +36,8 @@ function mail_utf8($to, $subject = '(No subject)', $message = "")
 	return mail($to, "=?UTF-8?B?" . base64_encode($subject) . "?=", $message, $headers);
 }
 
-
-function client_ip()
-{
+/*From google search...*/
+function client_ip(){
     if( !empty( $_SERVER['HTTP_X_FORWARED_FOR'] ) )
         $ip = $_SERVER['HTTP_X_FORWARED_FOR'];
     else if ( !empty($_SERVER['HTTP_CLIENT_IP']))
@@ -49,6 +48,4 @@ function client_ip()
 }
 
 include('relatives.php');
-
-include('db/db.php');
 ?>

@@ -51,7 +51,7 @@ if($isMobile && isset($_GET['p'])){
 		case "settings":
 		/*Account Management code*/
 	  		if($isLoggedIn)
-	        	include_once('view/settings.php');
+	        	include_once('view/content/settings.php');
 	        break;
 	    case "logout":
 				include_once('model/user/logout.php');
@@ -82,7 +82,7 @@ else
 		$_SESSION['REMOTE_ADDR']		= $ip;
 		$_SESSION['HTTP_USER_AGENT']	= $_SERVER['HTTP_USER_AGENT'];
 
-		include_once('view/tabs.php');
+		include_once('view/content/tabs.php');
 	}
 ?>
 	</div> <!-- content -->

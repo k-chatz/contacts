@@ -23,7 +23,7 @@ else
 
 <div class="pagination">
     <div class="page_loader">
-        <?php include('animations/page_loader.php'); ?>
+        <?php include('view/animations/page_loader.php'); ?>
     </div>
     <a href="#" class="first" data-action="first" style="background-image: url('view/images/previous2.png')" /></a>
     <a href="#" class="previous" data-action="previous" style="background-image: url('view/images/left207.png')" ></a>

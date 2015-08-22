@@ -6,6 +6,7 @@ session_start();
 
 include_once('model/plugins/Mobile_Detect.php');
 include_once('model/debug.php');
+include_once('model/db/db.php');
 include_once('model/model.php');
 include_once('view/alerts.php');
 

@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 //$ms = microtime(true);
 
 session_start();
-
+include_once('../db/db.php');
 include_once('../model.php');
 include_once('../debug.php');
 include_once('../../view/view.php');
@@ -37,11 +37,11 @@ if($isLoggedIn && $userid && $Records = user_is_online( $userid , $username , $c
 	switch( $action ){
 		case 'get_persons':
 			//insert_log_for_user($userid, $ip, $_SERVER['REMOTE_PORT'], $_SERVER['HTTP_USER_AGENT'], "Ajax.php: get_persons");
-			include('../../view/persons.php');
+			include('../../view/content/persons.php');
 			break;
 		case 'get_person':
 			//insert_log_for_user($userid, $ip , $_SERVER['REMOTE_PORT'], $_SERVER['HTTP_USER_AGENT'], "Ajax.php: get_person");
-			include('../../view/person.php');
+			include('../../view/content/person.php');
 			break;
 		default:
 		    alert("<b>ajax.php:</b><br />Err::Ajax.php:No action here","warning");

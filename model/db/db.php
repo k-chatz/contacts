@@ -21,27 +21,27 @@ function Query($sql, $debug, $db_name = "contacts"){
     /*Show or hide queries*/
     (isset( $_SESSION['admin'] ) && $_SESSION['admin'] == "xxx") ? $print = 1 : $print = 0;
 
-    /*Start timer*/
-    $msc = microtime(true);
-
     /*Database connect*/
     include('connection.php');
 
     $records = NULL;
 
+    /*Start timer*/
+    $msc = microtime(true);
+
     if ($result = $mysqli->query($sql)){
         /*Successful Query execution*/
-
-        /*increasing number of queries*/
-        isset($_SESSION['Queries']) ? $_SESSION['Queries']++ : $_SESSION['Queries'] = 1;
 
         /*Stop timer*/
         $msc = number_format( microtime(true) - $msc , 3);
 
+        /*increasing number of queries*/
+        isset($_SESSION['Queries']) ? $_SESSION['Queries']++ : $_SESSION['Queries'] = 1;
+
         if ($result !== true){
             /*For SELECT queries*/
            
-           dump($result,"result");
+           //dump($result,"result");
 
            /*If exists records then fetch this.*/
             if($result->num_rows){

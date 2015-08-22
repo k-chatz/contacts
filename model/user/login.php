@@ -4,8 +4,8 @@ ini_set('display_errors', '1');
 
 ob_start();
 
-include_once('../plugins/SqlFormatter.php');
 include_once('../debug.php');
+include_once('../db/db.php');
 include_once('../model.php');
 
 session_start();
