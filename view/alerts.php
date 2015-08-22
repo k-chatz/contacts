@@ -1,6 +1,6 @@
 <?php
 function alert( $message, $type = "info" ){
-$imgPath = path("/contacts/view/images/".($type == "info" ? "ok4.png" : "error6.png"));
+$imgPath = path("/contacts/view/icons/".($type == "info" ? "ok4.png" : "error6.png"));
 	?>
 		<div id="<?php echo ($type == "info") ? "info" : "warning"; ?>" onclick="hide(this)">
 			<div class="alert_icon">

@@ -3,4 +3,4 @@
 	<a onclick="document.getElementById('searchform').submit()"></a>
 	<div class='clear'></div>
 </form>
-<?php include('results.php');?>
+<?php //include('results.php');?>
