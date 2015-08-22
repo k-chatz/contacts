@@ -15,6 +15,8 @@ function Query($sql, $debug, $db_name = "contacts"){
             $msc = microtime(true) - $msc;
             $msc = number_format($msc, 3);
 
+            /*At this point and down must be different function.*/
+
             if ($result !== true) //SELECT
                     {
                     if ($result->num_rows) {
