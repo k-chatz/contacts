@@ -28,7 +28,7 @@ if ($detect->isMobile())
 	$isMobile = true;
 else
 {
-	$_SESSION['warning'] = "<b>index.php:</b><br>This page is only for mobile devices. To continue try to open this page with a mobile device!";
+	$_SESSION['notice'] = "<b>index.php:</b><br>This page is only for mobile devices. To continue try to open this page with a mobile device!";
 	$isMobile = false;
 }
 

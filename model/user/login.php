@@ -47,7 +47,7 @@ if (isset($_POST['user']) && !empty($_POST['user']) && isset($_POST['userpass'])
                         break;
                 default;
                         echo "<br />case: \"default\"<br />";
-                        $_SESSION['warning'] = "<b>login.php:</b><br />Your account is disabled! To activate and login in your account hit the link that was sent to your inbox.";
+                        $_SESSION['notice'] = "<b>login.php:</b><br />Your account is disabled! To activate and login in your account hit the link that was sent to your inbox.";
                         break;
             }
         }

@@ -47,20 +47,20 @@ if($isLoggedIn && $userid && $Records = user_is_online( $userid , $username , $c
 			include('../../view/content/person.php');
 			break;
 		default:
-		    alert("<b>ajax.php:</b><br />Err::Ajax.php:No action here","warning");
+		    alert("<b>ajax.php:</b><br />Err::Ajax.php:No action here","Error");
 	}
 }
 else
 {
 	//header("HTTP/1.0 400 Bad Request");
-	alert("<b>ajax.php:</b><br />Session expired, <a href='index.php?p=login' title='System Login'>login</a> again!","warning");
+	alert("<b>ajax.php:</b><br />Session expired, <a href='index.php?p=login' title='System Login'>login</a> again!","Warning");
 	unset($_SESSION['userid']);
 	unset($_SESSION['username']);
 	unset($_SESSION['isLoggedIn']);
 }
 	$ms = number_format( microtime(true) - $ms , 2);
 
-	if($_SESSION['debug'] == "on"){
+	if(isset($_SESSION['debug']) && $_SESSION['debug'] == "on"){
 		script_complete_time($ms);
 	}
 

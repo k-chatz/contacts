@@ -18,5 +18,5 @@ if( NULL != $records = get_person( $userid , $personid )){
 	//dump( $stack, "stack" );
 }
 else
-	alert("Error: This contact does not exists!","warning");
+	alert("This contact does not exists!","Error");
 ?>

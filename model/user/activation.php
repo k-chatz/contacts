@@ -17,7 +17,7 @@ if ( isset($_GET['id']) && isset($_GET['user']) && isset($_GET['active']))
 		{
 			case "Activated";
 				echo "<br />Activated<br />";
-				$_SESSION['info'] = "<b>activation.php:</b><br />User account <b>'" . $username . "'</b> it is already activated.";
+				$_SESSION['notice'] = "<b>activation.php:</b><br />User account <b>'" . $username . "'</b> it is already activated.";
 				break;
 			case "Locked";
 				echo "<br />Locked<br />";
@@ -28,7 +28,7 @@ if ( isset($_GET['id']) && isset($_GET['user']) && isset($_GET['active']))
 				if (exists_activecode($_GET['user'], $_GET['active']))
 				{
 					activate_user($_GET['user'], $_GET['active']);
-					$_SESSION['info'] = "<b>activation.php:</b><br />User account <b>'" . $_GET['user'] . "'</b> successfully activated!, now you can use your username and password to login.";
+					$_SESSION['success'] = "<b>activation.php:</b><br />User account <b>'" . $_GET['user'] . "'</b> successfully activated!, now you can use your username and password to login.";
 				}
 				else
 					$_SESSION['warning'] = "<b>activation.php:</b><br />There is no correlation of the activation code to account: <b>" . $_GET['user'] . "</b>!";
