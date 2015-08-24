@@ -16,14 +16,14 @@ function resultToArray($result){
     return $records;
 }
 
-function Query($sql, $debug, $db_name = "contacts"){
+function Query($sql, $backtrace, $database = "contacts"){
     /*Show or hide queries*/
-    (isset( $_SESSION['debug'] ) && $_SESSION['debug'] == "on") ? $print = 1 : $print = 0;
+    (isset( $_SESSION['debug'] ) && $_SESSION['debug'] == "on") ? $debug = 1 : $debug = 0;
 
     /*Database connect*/
     include('connection.php');
 
-    $records = NULL;
+    $response = NULL;
 
     /*Start timer*/
     $msc = microtime(true);
@@ -44,33 +44,48 @@ function Query($sql, $debug, $db_name = "contacts"){
 
            /*If exists records then fetch this.*/
             if($result->num_rows){
-                $records = resultToArray($result);
+                $response = resultToArray($result);
             }
-            if($print) 
-                show_query(1, $debug, $mysqli->host_info, $db_name, $sql, $result->num_rows ? $result->num_rows : 0, $msc, $result->num_rows ? $records : NULL);
+
+            /*Show SELECT query*/
+            if($debug) 
+                showQuery("FETCH", $backtrace, $mysqli->host_info, $database, $sql, $result->num_rows ? $result->num_rows : 0, $msc, $result->num_rows ? $response : NULL);
         }
-        else{ 
+        else{
              /*For INSERT, UPDATE, DELETE queries*/
-
-            $records = $mysqli->insert_id;
-
-            /*Show SELECT query debugging*/
-            if($print)
-                show_query(2, $debug, $mysqli->host_info, $db_name, $sql, $mysqli->insert_id, $msc, $records);
+            $response = $mysqli->insert_id;
+            if($debug)
+                showQuery("AFFECT", $backtrace, $mysqli->host_info, $database, $sql, $mysqli->insert_id, $msc, $response);
         }
     }
     else{
         /*Query execution failed!*/
         $msc = number_format( microtime(true) - $msc , 2);
 
-        /*Show query debugging*/
-        show_query(3, $debug, $mysqli->host_info, $db_name, $sql, 0, $msc, $mysqli->error);
+        /*Show failure query*/
+        showQuery("FAILURE", $backtrace, $mysqli->host_info, $database, $sql, 0, $msc, $mysqli->error);
+
+        /*Return error message*/
+        $response = $mysqli->error;
     }
         /*Close database connection*/
         $mysqli->close();
 
         /*Return records in tabular or nothing if it fails.*/
-        return  $records;
+        return  $response;
+}
+
+function errorChecking($response){
+/*Check if a query has returned error message*/
+    if(!is_string($response)){
+        return $response;
+    }
+    else
+    {
+        $_SESSION['error'] = "<b>db.php:</b><br />".$response;
+        echo $_SESSION['error'] ."<br />";
+        return NULL;
+    }
 }
 
 include_once('select/select.php');
