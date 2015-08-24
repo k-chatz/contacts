@@ -3,7 +3,7 @@ function alert( $message, $type = "Notice" ){
 	?>
 		<div id="<?php echo $type ?>" onclick="hide(this)">
 			<div class="alert_icon">
-				<img src="<?php echo path( "/contacts/view/icons/". $type .".png") ?>" alt="Alert icon" height="24" />
+				<img src="<?php echo rootPath( "/contacts/view/icons/". $type .".png") ?>" alt="Alert icon" height="24" />
 			</div>
 			<div class="alert_content"><?php echo "<b>".$type.":</b> ".(!empty($message) ? $message : "alerts.php: Empty message!"); ?></div>
 		</div>

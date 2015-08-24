@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 ob_start();
 
-function path($path = ""){
+function rootPath($path = ""){
 	return $_SERVER['REQUEST_SCHEME']."://".($_SERVER['SERVER_NAME'] == "::1" ? "localhost" : $_SERVER['SERVER_NAME'] ).":".$_SERVER['SERVER_PORT'].$path;
 }
 
