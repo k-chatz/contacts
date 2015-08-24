@@ -16,13 +16,12 @@ include_once('model/db/db.php');
 include_once('model/model.php');
 include_once('view/alerts.php');
 
-//dump($_SERVER,"SERVER");
-//dump($_REQUEST ,"REQUEST");
-//dump($_SESSION,"SESSION");
-
-//Show or hide Queries for debugging
+//Show or hide debugging informations.
 if( isset($_GET['debug']) ) $_SESSION['debug'] = $_GET['debug'];
 
+$debug = (isset($_SESSION['debug']) && $_SESSION['debug'] == "on") ? 1 : 0;
+
+/*Device check*/
 $detect = new Mobile_Detect();
 if ($detect->isMobile())
 	$isMobile = true;
@@ -32,11 +31,11 @@ else
 	$isMobile = false;
 }
 
-/*For user activity checking.*/
-include_once('model/user/activity.php'); 
-
 /*Head of the page*/
 include_once('view/building/head.php');
+
+/*For user activity checking.*/
+include_once('model/user/activity.php'); 
 
 /*For update behavior buttons who is at the top right corner of the application.*/
 include_once('view/building/header.php');
@@ -64,7 +63,6 @@ if($confid)
 include_once('controllers/pageController.php');
 
 ?>
-
 	</div> <!-- content -->
 </div> <!--contentplace -->
 
@@ -72,5 +70,7 @@ include_once('controllers/pageController.php');
 
 include_once('view/building/footer.php');
 
-//dump($_SESSION , "SESSION");
+if($debug){
+	dump($_SESSION,"SESSION");
+}
 ?>

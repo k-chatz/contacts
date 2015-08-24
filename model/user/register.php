@@ -3,11 +3,22 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 ob_start();
 
+session_start();
+
 include_once('../debug.php');
 include_once('../db/db.php');
 include_once('../model.php');
 
-session_start();
+$debug = (isset($_SESSION['debug']) && $_SESSION['debug'] == "on") ? 1 : 0;
+
+if($debug){
+    /*Head of the page*/
+    include_once('../../view/building/head.php');
+    dump($_SESSION , "SESSION");
+    dump($_POST , "POST");
+}
+
+$failure = 0;
 
 /*For disable or enable registration.*/
 if(1)
@@ -28,47 +39,54 @@ if(1)
 					if (mail_utf8($_POST['useremail_1'], "Account validation MyCnts", $message))
 					{
 						$_SESSION['success'] = "<b>register.php:</b><br>Thanks for signing up! We've sent an email account activation at: <b>'" . $username . "'</b>";
-						header("Location: ../../index.php?p=login");
+						echo $_SESSION['success'];
 					}
 					else 
 					{
 						$_SESSION['error'] = "<b>register.php:</b><br>Ooops! Something went wrong with sending e-mail!";
-						header("Location: ../../index.php?p=register");
+						echo $_SESSION['error'];
 					}
 				}
 				else
 				{
+					$failure = 1;
 					$_SESSION['error'] = "<b>register.php:</b><br>Ooops! The registration process failed!";
-					echo $_SESSION['warning'];
-					header("Location: ../../index.php?p=register");
+					echo $_SESSION['error'];
 				}
 			}
 			else
 			{
+				$failure = 1;
 				$_SESSION['warning'] = "<b>register.php:</b><br>The user with e-mail '" . $username . "' already exists, try again with another username!";
 				echo $_SESSION['warning'];
-				header("Location: ../../index.php?p=register");
 			}
 		}
 		else
 		{
+			$failure = 1;
 			$_SESSION['warning'] = "<b>register.php:</b><br>Incorrect keying in confirmation fields, try again!";
 			echo $_SESSION['warning'];
-			header("Location: ../../index.php?p=register");
 		}
 	}
 	else
 	{
+		$failure = 1;
 		$_SESSION['warning'] = "<b>register.php:</b><br>You must fill in all required fields!";
 		echo $_SESSION['warning'];
-		header("Location: ../../index.php?p=register");
 	}
-	unset($_POST['regform']);
 }
 else
 {
 	$_SESSION['notice'] = "<b>register.php:</b><br>This project is not complete yet! User registration  is temporarily disabled.";
-	echo $_SESSION['warning'];
-	header("Location: ../../index.php");
+	echo $_SESSION['notice'];	
 }
+
+$nextLocation = $failure ? "../../index.php?p=register" : "../../index.php?p=login";
+
+if($debug){
+    echo "<br />Manually redirect to <a href=". $nextLocation ." \"title=\"index\">". $nextLocation ."</a>";
+    dump($_SESSION , "SESSION");
+}
+else
+    header("Location: ". $nextLocation);
 ?>
