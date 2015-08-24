@@ -63,6 +63,7 @@ border-width: 1px;
 border-color: rgba(0, 0, 0, 0.4);
 border-radius: 0.2em;
 margin: 5px;
+font: caption;
 }
 
 div#welcome {

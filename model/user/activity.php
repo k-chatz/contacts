@@ -20,9 +20,13 @@ else
 	{
 		if( NULL == $Records = user_is_online( $userid , $username , trim($confid) , $ip , $_SERVER['HTTP_USER_AGENT'] , $timeout ))
 		{
+			
 			unset($_SESSION['userid']);
+			unset($_SESSION['timeout']);
 			unset($_SESSION['username']);
 			unset($_SESSION['isLoggedIn']);
+			unset($_SESSION['becomeLogin']);
+
 			$isLoggedIn = 0;
 			$userid		= 0;
 			$username	= 0;
