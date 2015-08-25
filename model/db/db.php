@@ -16,6 +16,16 @@ function resultToArray($result){
     return $records;
 }
 
+function getSqlErrors($errorlist){
+    $i = 0;
+    $errors = "";
+    foreach($errorlist as $list){
+        $i++;
+        $errors .= "#". $i .") ERROR ". $list['errno'] ." (". $list['sqlstate'] ."): ". $list['error']."\n";
+    }
+    return $errors;
+}
+
 function Query($sql, $backtrace, $database = "contacts"){
     /*Show or hide queries*/
     (isset( $_SESSION['debug'] ) && $_SESSION['debug'] == "on") ? $debug = 1 : $debug = 0;
@@ -66,13 +76,14 @@ function Query($sql, $backtrace, $database = "contacts"){
         showQuery("FAILURE", $backtrace, $mysqli->host_info, $database, $sql, 0, $msc, $mysqli->error);
 
         /*Return error message*/
-        $response = $mysqli->error;
+        $response = getSqlErrors($mysqli->error_list);
     }
+
         /*Close database connection*/
         $mysqli->close();
 
         /*Return records in tabular or nothing if it fails.*/
-        return  $response;
+        return $response;
 }
 
 function errorChecking($response){
