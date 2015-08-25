@@ -69,7 +69,7 @@ if (isset($_POST['user']) && !empty($_POST['user']) && isset($_POST['userpass'])
     else
     {
         $failure = 1;
-        $_SESSION['warning'] = "<b>login.php:</b><br>Could not find a user with this account:" . $username . ", try again or <a href='index.php?register'>register</a> with your own email!";
+        $_SESSION['warning'] = "<b>login.php:</b><br>Could not find a user with this account: " . $username . ", try again or <a href='index.php?register'>register</a> with your own email!";
         echo $_SESSION['warning'];
     }
 }

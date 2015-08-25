@@ -36,11 +36,11 @@ function showQuery($type, $backtrace, $host_info, $database, $sql, $rows, $msc, 
 	{
 		case 'FETCH':
 			$class = "qFetch";
-			$CreditTitle = "<b>Result <?php echo $rows ?> records:</b>";
+			$CreditTitle = "<b>Result ". $rows ." records:</b>";
 			break;
 		case 'AFFECT':
 			$class = "qAffect";
-			$CreditTitle = "<b>Auto Increment <?php echo $rows ?>:</b>";
+			$CreditTitle = "<b>Auto Increment ". $rows .":</b>";
 			break;
 		case 'FAILURE':
 			$class = "qFailure";
@@ -55,7 +55,7 @@ function showQuery($type, $backtrace, $host_info, $database, $sql, $rows, $msc, 
 ?>
 	<div class="<?php echo $class ?>">
 		<div id="Qid<?php echo $Queries ?>" class="close" onclick="hide( $(this).next() )">
-			<b>Q: <?php echo $Queries; ?>|T: <?php echo $msc ?>''|
+			<b>#<?php echo $Queries; ?>|T: <?php echo $msc ?>''|
 				<span style="color:red">R:<?php echo $rows; ?></span>
 				|F:<?php echo $backtrace[0]['function']; ?>
 			</b>

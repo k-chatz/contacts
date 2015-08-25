@@ -26,20 +26,6 @@ a {
     color: white;
 }
 
-.alert_icon {
-float: left;
-margin: 1px;
-padding: 2px;
-width: 20px;
-}
-
-.alert_content {
-float: left;
-padding: 3px 0px 3px 0px;
-margin-left: 10px;
-width: 85%;
-}
-
 .close {
 background-color: rgba(0, 0, 0, 0.09);
 font-size: 90%;

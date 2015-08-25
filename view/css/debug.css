@@ -31,7 +31,7 @@
 }
 
 div.qFetch{
-	padding: 1px;
+	padding: 2px;
 	border: 3px double rgb(0, 0, 0);
 	color: black;
 	background-color: #AEF2B0;
@@ -39,15 +39,15 @@ div.qFetch{
 }
 
 div.qAffect{
-	padding: 1px;
+	padding: 2px;
 	border: 3px double rgb(0, 0, 0);
 	color: black;
-	background-color: #FFBD87;
+	background-color: #FFD572;
 	overflow: auto;
 }
 
 div.qFailure{
-	padding: 1px;
+	padding: 2px;
 	border: 3px double rgb(0, 0, 0);
 	color: black;
 	background-color: #FD827D;
@@ -76,7 +76,7 @@ div.qError div.close
 div.scriptTime {
 	border: 3px black;
     border-style: double;
-    background-color: #FFB530;
+    background-color: #FFD572;;
 	font-size: small;
     color: black;
     margin: 1px 0px 1px 0px;

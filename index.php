@@ -23,7 +23,7 @@ $debug = (isset($_SESSION['debug']) && $_SESSION['debug'] == "on") ? 1 : 0;
 
 /*Device check*/
 $detect = new Mobile_Detect();
-if ($detect->isMobile())
+if ($detect->isMobile() || $debug)
 	$isMobile = true;
 else
 {

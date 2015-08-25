@@ -1,10 +1,10 @@
 div#Notice {
     color: black;
-    padding: 5px;
+    padding: 2px;
     margin: 0px 0px 2px 0px;
     overflow: auto;
+    font-family: monospace;
     background: blue;
-
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#93cede+0,75bdd1+41,49a5bf+100;Blue+3D+%235 */
     background: rgb(147,206,222); /* Old browsers */
     background: -moz-linear-gradient(top,  rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%); /* FF3.6+ */
@@ -18,9 +18,10 @@ div#Notice {
 
 div#Success {
     color: black;
-    padding: 5px;
+    padding: 2px;
     margin: 0px 0px 2px 0px;
     overflow: auto;
+    font-family: monospace;
     background: #d2ff52;
     background: -moz-linear-gradient(top, #d2ff52 0%, #91e842 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2ff52), color-stop(100%,#91e842));
@@ -33,9 +34,10 @@ div#Success {
 
 div#Warning {
     color: black;
-	padding: 5px;
+    padding: 2px;
     margin: 0px 0px 2px 0px;
 	overflow: auto;
+    font-family: monospace;
 	background: #ffd65e;
 	background: -moz-linear-gradient(top, #ffd65e 0%, #febf04 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd65e), color-stop(100%,#febf04));
@@ -48,9 +50,10 @@ div#Warning {
 
 div#Error {
     color: black;
-    padding: 5px;
+    padding: 2px;
     margin: 0px 0px 2px 0px;
     overflow: auto;
+    font-family: monospace;
     background: red;
 
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff8777+0,fd5451+100 */
@@ -62,4 +65,26 @@ div#Error {
     background: -ms-linear-gradient(top,  rgba(255,135,119,1) 0%,rgba(253,84,81,1) 100%); /* IE10+ */
     background: linear-gradient(to bottom,  rgba(255,135,119,1) 0%,rgba(253,84,81,1) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8777', endColorstr='#fd5451',GradientType=0 ); /* IE6-9 */
+}
+
+.alert_content {
+    float: left;
+    padding: 3px 0px 3px 0px;
+    margin-left: 10px;
+    width: 85%;
+}
+
+.alert_icon {
+    float: left;
+    margin: 1px;
+    padding: 2px;
+    width: 20px;
+}
+
+pre.alert {
+    background-color: rgba(255, 255, 255, 0.4);
+    margin: 2px 0px 0px 0px;
+    font-family: monospace;
+    color: #000000;
+    box-shadow: 0px 0px 3px rgb(255, 255, 255);
 }
