@@ -42,11 +42,11 @@ include_once('view/building/header.php');
 
 ?>
 
-<div class="contentplace">
+<div class="body">
 
 <?php
 
-/*To display info or warning messages (if this exists)*/
+/*To display alert messages (if these exists)*/
 session_alert();
 
 if($confid)
@@ -64,7 +64,7 @@ include_once('controllers/pageController.php');
 
 ?>
 	</div> <!-- content -->
-</div> <!--contentplace -->
+</div> <!--body -->
 
 <?php
 

@@ -17,7 +17,7 @@ input[type=text], textarea {
 outline: none;
 }
 
-div.contentplace{ /*Πράσινη περιοχή*/
+div.body{
  background-color: #636E80;
  padding: 2px 0 0 0;
 }

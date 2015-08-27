@@ -1,4 +1,4 @@
-div.header{
+div.head{
 /* color: #000000; */
 padding: 1px;
 background: -moz-linear-gradient(top, #8d949b 0%, #828c95 36%, #28343b 100%);
@@ -10,7 +10,7 @@ background: linear-gradient(to bottom, #040D17 0%,#152E42 36%,#050F1F 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d949b', endColorstr='#28343b',GradientType=0 );
 }
 
-.bar {
+.header {
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 11px;
 color: #fff;
@@ -23,7 +23,7 @@ text-align: right;
 }
 
 
-.bar a.btn {
+.header a.btn {
 display: inline-block;
 padding: 0px 3px 0px 3px;
 font-size: 11px;
@@ -35,24 +35,24 @@ text-align: center;
 border: solid 1px rgba(255, 255, 255, 0);
 }
 
-.bar a.btn:hover{
+.header a.btn:hover{
     border: solid 1px #52FF9F;
     color: #52FF9F;
 } 
 
-.bar a.logo {
+.header a.logo {
 display: block;
 float: left;
 border: none;
 text-decoration: none;
 }
 
-.bar a.logo img{
+.header a.logo img{
 width: 120px;
 height: 60px;
 }
 
-div.bar input {
+div.header input {
 background-color: #527DCA;
 float: none;
 height: 20px;
