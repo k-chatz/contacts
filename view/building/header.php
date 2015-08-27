@@ -1,7 +1,7 @@
 
-<div class="header">
-	<div class="bar">
-		<a class="logo" href='index.php<?php echo $confid ? "?cnf=".$confid : ""; ?>'><img height="22" src="view/icons/group44.png" alt="Contacts logo" style="-webkit-filter: invert(100%); filter: invert(100%);"></a>
+<div class="head">
+	<div class="header">
+		<a class="logo" href="<?php echo $root ?>index.php<?php echo $confid ? "?cnf=".$confid : ""; ?>"><img height="22" src="<?php echo $root ?>/view/icons/group44.png" alt="Contacts logo" style="-webkit-filter: invert(100%); filter: invert(100%);"></a>
 			<?php
 			if( isset($_SESSION['username']) && isset($_SESSION['userid']) ) {
 			?>

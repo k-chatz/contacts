@@ -80,12 +80,12 @@ else
 	$_SESSION['notice'] = "<b>register.php:</b><br>This project is not complete yet! User registration  is temporarily disabled.";
 	echo $_SESSION['notice'];	
 }
-
-$nextLocation = $failure ? "../../index.php?p=register" : "../../index.php?p=login";
+$root = rootPath();
+$nextLocation = $failure ? $root ."index.php?p=register" : $root ."index.php?p=login";
 
 if($debug){
-    echo "<br />Manually redirect to <a href=". $nextLocation ." \"title=\"index\">". $nextLocation ."</a>";
     dump($_SESSION , "SESSION");
+    echo "<br />Manually redirect to <a href=". $nextLocation ." \"title=\"index\">". $nextLocation ."</a>";
 }
 else
     header("Location: ". $nextLocation);

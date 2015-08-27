@@ -4,7 +4,8 @@ ini_set('display_errors', '1');
 ob_start();
 
 function rootPath($path = ""){
-	return $_SERVER['REQUEST_SCHEME']."://".($_SERVER['SERVER_NAME'] == "::1" ? "localhost" : $_SERVER['SERVER_NAME'] ).":".$_SERVER['SERVER_PORT'].$path;
+	$root = "/Contacts/";
+	return $_SERVER['REQUEST_SCHEME']."://".($_SERVER['SERVER_NAME'] == "::1" ? "localhost" : $_SERVER['SERVER_NAME'] ).":".$_SERVER['SERVER_PORT'].$root.$path;
 }
 
 function get_string_of_streets_from_address($address)
@@ -46,5 +47,4 @@ function client_ip(){
         $ip = $_SERVER['REMOTE_ADDR'];
     return $ip;
 }
-
 ?>

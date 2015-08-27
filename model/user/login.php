@@ -10,6 +10,10 @@ include_once('../debug.php');
 include_once('../db/db.php');
 include_once('../model.php');
 
+$username = isset($_POST['user'])     ? trim($_POST['user'])          : 0;
+
+$userpass = isset($_POST['userpass']) ? md5(trim($_POST['userpass'])) : 0;
+
 $debug = (isset($_SESSION['debug']) && $_SESSION['debug'] == "on") ? 1 : 0;
 
 if($debug){
@@ -21,14 +25,8 @@ if($debug){
 
 $failure = 0;
 
-if (isset($_POST['user']) && !empty($_POST['user']) && isset($_POST['userpass']) && !empty($_POST['userpass']))
-{
-    $username = trim($_POST['user']);
+if ($username && $userpass){
 
-	//$username = mysql_real_escape_string( $_POST['user']);
-	
-    $userpass = md5(trim($_POST['userpass']));
-    
     if (NULL != $Records = exists_user(0, $username))
     {
         $userid = $Records[0]['userid'];
@@ -79,12 +77,12 @@ else
     $_SESSION['warning'] = "<b>login.php:</b><br>You must fill in both fields to continue!";
     echo $_SESSION['warning'];
 }
-
-$nextLocation = $failure ? "../../index.php?p=login" : "../../index.php?cnf=".$_POST['confid'];
+$root = rootPath();
+$nextLocation = $failure ? $root ."index.php?p=login" : $root ."index.php?cnf=".$_POST['confid'];
 
 if($debug){
-    echo "<br />Manually redirect to <a href=". $nextLocation ." \"title=\"index\">". $nextLocation ."</a>";
     dump($_SESSION , "SESSION");
+    echo "<br />Manually redirect to <a href=". $nextLocation ." \"title=\"index\">". $nextLocation ."</a>";
 }
 else
     header("Location: ". $nextLocation);
