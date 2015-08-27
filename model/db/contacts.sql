@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2015-08-25 00:08:27
+Date: 2015-08-26 16:32:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -64,21 +64,6 @@ CREATE TABLE `cities` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for coordinates
--- ----------------------------
-DROP TABLE IF EXISTS `coordinates`;
-CREATE TABLE `coordinates` (
-  `coordinatesid` int(11) NOT NULL AUTO_INCREMENT,
-  `latitude` varchar(30) NOT NULL,
-  `longitude` varchar(30) NOT NULL,
-  PRIMARY KEY (`coordinatesid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of coordinates
--- ----------------------------
-
--- ----------------------------
 -- Table structure for countries
 -- ----------------------------
 DROP TABLE IF EXISTS `countries`;
@@ -126,9 +111,6 @@ CREATE TABLE `logs` (
 -- Records of logs
 -- ----------------------------
 
-
-
-
 -- ----------------------------
 -- Table structure for persons
 -- ----------------------------
@@ -147,52 +129,54 @@ CREATE TABLE `persons` (
   `photopath` varchar(255) DEFAULT NULL,
   `added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `got_alias` bit(1) NOT NULL,
+  `got_address` bit(1) NOT NULL DEFAULT b'0',
+  `got_phone` bit(1) NOT NULL,
   PRIMARY KEY (`personid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of persons
 -- ----------------------------
-INSERT INTO `persons` VALUES ('1', '1', 'Name1', 'Surname', 'male', '1988-07-30', 'Comments place!', '1', '8', '9', '', '2014-09-11 22:47:52', '');
-INSERT INTO `persons` VALUES ('2', '1', 'Name2', 'Surname', 'male', '1986-04-13', 'Comments place!', '0', '8', '9', '', '2014-09-11 22:52:16', '\0');
-INSERT INTO `persons` VALUES ('3', '1', 'Name3', 'Surname', 'female', null, 'Comments place!', '0', '8', '9', '', '2014-09-11 22:52:17', '\0');
-INSERT INTO `persons` VALUES ('4', '1', 'Name4', 'Surname', 'female', null, 'Comments place!', '0', '11', '10', '', '2014-09-11 22:52:17', '\0');
-INSERT INTO `persons` VALUES ('5', '1', 'Name5', 'Surname', 'male', null, 'Comments place!', '0', '11', '10', '', '2014-09-11 22:52:18', '\0');
-INSERT INTO `persons` VALUES ('6', '1', 'Name6', 'Surname', 'male', null, 'Comments place!', '0', '12', '13', '', '2014-09-11 22:52:19', '\0');
-INSERT INTO `persons` VALUES ('7', '1', 'Name7', 'Surname', 'male', null, 'Comments place!', '0', '12', '13', '', '2014-09-11 22:52:19', '\0');
-INSERT INTO `persons` VALUES ('8', '1', 'Name8', 'Surname', 'female', null, 'Comments place!', '3', '14', '15', '', '2014-09-11 22:52:20', '\0');
-INSERT INTO `persons` VALUES ('9', '1', 'Name9', 'Surname', 'male', null, 'Comments place!', '3', '16', '17', '', '2014-09-11 22:52:20', '\0');
-INSERT INTO `persons` VALUES ('10', '1', 'Name10', 'Surname', 'male', null, 'Comments place!', '2', '16', '17', '', '2014-09-11 22:52:21', '\0');
-INSERT INTO `persons` VALUES ('11', '1', 'Name11', 'Surname', 'female', null, 'Comments place!', '2', '0', '0', '', '2014-09-11 22:52:22', '\0');
-INSERT INTO `persons` VALUES ('12', '1', 'Name12', 'Surname', 'female', '1945-11-06', 'Comments place!', '2', '16', '17', '', '2014-09-11 22:52:23', '\0');
-INSERT INTO `persons` VALUES ('13', '1', 'Name13', 'Surname', 'male', null, 'Comments place!', '2', '0', '0', '', '2014-09-11 22:52:23', '\0');
-INSERT INTO `persons` VALUES ('14', '1', 'Name14', 'Surname', 'female', null, 'Comments place!', '1', '23', '22', '', '2014-09-11 22:52:24', '\0');
-INSERT INTO `persons` VALUES ('15', '1', 'Name15', 'Surname', 'male', null, 'Comments place!', '1', '0', '0', '', '2014-09-11 22:52:25', '\0');
-INSERT INTO `persons` VALUES ('16', '1', 'Name16', 'Surname', 'female', null, 'Comments place!', '4', '0', '0', '', '2014-09-11 22:52:26', '\0');
-INSERT INTO `persons` VALUES ('17', '1', 'Name17', 'Surname', 'male', '0000-00-00', 'Comments place!', '4', '0', '0', '', '2014-09-11 22:52:27', '\0');
-INSERT INTO `persons` VALUES ('20', '1', 'Name18', 'Surname', 'female', '2012-12-12', 'Comments place!', '0', '16', '17', '', '2014-09-14 19:53:28', '\0');
-INSERT INTO `persons` VALUES ('26', '1', 'Name19', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:46:21', '\0');
-INSERT INTO `persons` VALUES ('27', '1', 'Name20', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:24:07', '\0');
-INSERT INTO `persons` VALUES ('30', '1', 'Name21', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:28:42', '\0');
-INSERT INTO `persons` VALUES ('31', '1', 'Name22', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:30:30', '\0');
-INSERT INTO `persons` VALUES ('32', '1', 'Name23', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:34:03', '\0');
-INSERT INTO `persons` VALUES ('33', '1', 'Name24', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:35:05', '\0');
-INSERT INTO `persons` VALUES ('34', '1', 'Name25', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:36:22', '\0');
-INSERT INTO `persons` VALUES ('36', '1', 'Name26', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:39:31', '\0');
-INSERT INTO `persons` VALUES ('37', '1', 'Name27', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:40:51', '\0');
-INSERT INTO `persons` VALUES ('39', '1', 'Name28', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:44:18', '\0');
-INSERT INTO `persons` VALUES ('40', '1', 'Name29', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:48:50', '\0');
-INSERT INTO `persons` VALUES ('41', '1', 'Name30', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:49:56', '\0');
-INSERT INTO `persons` VALUES ('42', '1', 'Name31', 'Surname', 'female', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:52:41', '\0');
-INSERT INTO `persons` VALUES ('43', '1', 'Name32', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-25 00:00:00', '\0');
-INSERT INTO `persons` VALUES ('44', '1', 'Name33', 'Surname', 'female', '1984-09-25', 'Comments place!', '0', null, null, '', '2013-01-25 20:39:58', '\0');
-INSERT INTO `persons` VALUES ('45', '1', 'Name34', 'Surname', 'female', null, 'Comments place!', '0', null, null, '', '2013-01-25 20:41:47', '\0');
-INSERT INTO `persons` VALUES ('46', '1', 'Name35', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-25 20:48:55', '\0');
-INSERT INTO `persons` VALUES ('48', '1', 'Name36', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:15:35', '\0');
-INSERT INTO `persons` VALUES ('49', '1', 'Name37', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:16:12', '\0');
-INSERT INTO `persons` VALUES ('50', '1', 'Name38', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:17:29', '\0');
-INSERT INTO `persons` VALUES ('51', '1', 'Name39', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:18:25', '\0');
-INSERT INTO `persons` VALUES ('52', '1', 'Name40', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:20:08', '\0');
+INSERT INTO `persons` VALUES ('1', '1', 'Name1', 'Surname', 'male', '1988-07-30', 'Comments place!', '1', '8', '9', '', '2014-09-11 22:47:52', '', '\0', '\0');
+INSERT INTO `persons` VALUES ('2', '1', 'Name2', 'Surname', 'male', '1986-04-13', 'Comments place!', '0', '8', '9', '', '2014-09-11 22:52:16', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('3', '1', 'Name3', 'Surname', 'female', null, 'Comments place!', '0', '8', '9', '', '2014-09-11 22:52:17', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('4', '1', 'Name4', 'Surname', 'female', null, 'Comments place!', '0', '11', '10', '', '2014-09-11 22:52:17', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('5', '1', 'Name5', 'Surname', 'male', null, 'Comments place!', '0', '11', '10', '', '2014-09-11 22:52:18', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('6', '1', 'Name6', 'Surname', 'male', null, 'Comments place!', '0', '12', '13', '', '2014-09-11 22:52:19', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('7', '1', 'Name7', 'Surname', 'male', null, 'Comments place!', '0', '12', '13', '', '2014-09-11 22:52:19', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('8', '1', 'Name8', 'Surname', 'female', null, 'Comments place!', '3', '14', '15', '', '2014-09-11 22:52:20', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('9', '1', 'Name9', 'Surname', 'male', null, 'Comments place!', '3', '16', '17', '', '2014-09-11 22:52:20', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('10', '1', 'Name10', 'Surname', 'male', null, 'Comments place!', '2', '16', '17', '', '2014-09-11 22:52:21', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('11', '1', 'Name11', 'Surname', 'female', null, 'Comments place!', '2', '0', '0', '', '2014-09-11 22:52:22', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('12', '1', 'Name12', 'Surname', 'female', '1945-11-06', 'Comments place!', '2', '16', '17', '', '2014-09-11 22:52:23', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('13', '1', 'Name13', 'Surname', 'male', null, 'Comments place!', '2', '0', '0', '', '2014-09-11 22:52:23', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('14', '1', 'Name14', 'Surname', 'female', null, 'Comments place!', '1', '23', '22', '', '2014-09-11 22:52:24', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('15', '1', 'Name15', 'Surname', 'male', null, 'Comments place!', '1', '0', '0', '', '2014-09-11 22:52:25', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('16', '1', 'Name16', 'Surname', 'female', null, 'Comments place!', '4', '0', '0', '', '2014-09-11 22:52:26', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('17', '1', 'Name17', 'Surname', 'male', '0000-00-00', 'Comments place!', '4', '0', '0', '', '2014-09-11 22:52:27', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('20', '1', 'Name18', 'Surname', 'female', '2012-12-12', 'Comments place!', '0', '16', '17', '', '2014-09-14 19:53:28', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('26', '1', 'Name19', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:46:21', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('27', '1', 'Name20', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:24:07', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('30', '1', 'Name21', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:28:42', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('31', '1', 'Name22', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:30:30', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('32', '1', 'Name23', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:34:03', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('33', '1', 'Name24', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:35:05', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('34', '1', 'Name25', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:36:22', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('36', '1', 'Name26', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:39:31', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('37', '1', 'Name27', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:40:51', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('39', '1', 'Name28', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:44:18', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('40', '1', 'Name29', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:48:50', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('41', '1', 'Name30', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:49:56', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('42', '1', 'Name31', 'Surname', 'female', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:52:41', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('43', '1', 'Name32', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-25 00:00:00', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('44', '1', 'Name33', 'Surname', 'female', '1984-09-25', 'Comments place!', '0', null, null, '', '2013-01-25 20:39:58', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('45', '1', 'Name34', 'Surname', 'female', null, 'Comments place!', '0', null, null, '', '2013-01-25 20:41:47', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('46', '1', 'Name35', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-25 20:48:55', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('48', '1', 'Name36', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:15:35', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('49', '1', 'Name37', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:16:12', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('50', '1', 'Name38', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:17:29', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('51', '1', 'Name39', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:18:25', '\0', '\0', '\0');
+INSERT INTO `persons` VALUES ('52', '1', 'Name40', 'Surname', 'male', null, 'Comments place!', '0', null, null, '', '2013-01-29 00:20:08', '\0', '\0', '\0');
 
 -- ----------------------------
 -- Table structure for phones
@@ -202,7 +186,8 @@ CREATE TABLE `phones` (
   `phoneid` int(11) NOT NULL AUTO_INCREMENT,
   `phone` varchar(20) NOT NULL,
   `type` int(1) NOT NULL,
-  PRIMARY KEY (`phoneid`),
+  `personid` int(11) NOT NULL,
+  PRIMARY KEY (`phoneid`,`personid`),
   KEY `PHONE` (`phone`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -339,4 +324,4 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'demo@demo.com', 'fe01ce2a7fbac8fafaed7c982a04e229', '173c7d875bb937b92f1dedd2a07afdb9', '2015-08-15 14:24:30', '88.197.66.116', '34154', 'Mozilla/5.0 (Linux; Android 4.1.2; GT-I8260 Build/JZO54K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.133 Mobile Safari/537.36', '88.197.66.116', 'Mozilla/5.0 (Linux; Android 4.1.2; GT-I8260 Build/JZO54K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.133 Mobile Safari/537.36', 'Logout', 'Activated', '\0');
+INSERT INTO `users` VALUES ('1', 'demo@demo.com', 'fe01ce2a7fbac8fafaed7c982a04e229', '642f27d573eddf7eefc4f021dbb6893d', '2015-08-15 14:24:30', '88.197.66.116', '34154', 'Mozilla/5.0 (Linux; Android 4.1.2; GT-I8260 Build/JZO54K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.133 Mobile Safari/537.36', '', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', '2015-08-26 15:19:46', 'Activated', '\0');

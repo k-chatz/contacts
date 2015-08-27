@@ -30,7 +30,7 @@ function getFunctionArgs($backtrace)
 	return $string;
 }
 
-function showQuery($type, $backtrace, $host_info, $database, $sql, $rows, $msc, $Result)
+function showQuery($type, $backtrace, $host_info, $database, $sql, $rows, $affected_rows, $msc, $Result)
 {
 	switch ($type) 
 	{
@@ -40,7 +40,7 @@ function showQuery($type, $backtrace, $host_info, $database, $sql, $rows, $msc, 
 			break;
 		case 'AFFECT':
 			$class = "qAffect";
-			$CreditTitle = "<b>Auto Increment ". $rows .":</b>";
+			$CreditTitle = "<b>Affected rows: ". $affected_rows .", Auto Increment ". $rows .":</b>";
 			break;
 		case 'FAILURE':
 			$class = "qFailure";
@@ -56,7 +56,7 @@ function showQuery($type, $backtrace, $host_info, $database, $sql, $rows, $msc, 
 	<div class="<?php echo $class ?>">
 		<div id="Qid<?php echo $Queries ?>" class="close" onclick="hide( $(this).next() )">
 			<b>#<?php echo $Queries; ?>|T: <?php echo $msc ?>''|
-				<span style="color:red">R:<?php echo $rows; ?></span>
+				<span style="color:red">R:<?php echo $rows ? $rows : $affected_rows; ?></span>
 				|F:<?php echo $backtrace[0]['function']; ?>
 			</b>
 		</div>
@@ -96,7 +96,7 @@ function dump( &$var , $description = "" , $output = 1 )
 	?>
 		<div class = "dumpBoxOutput">
 			<code>
-				Dump box | Script: <?php echo basename($traces[0]['file']); ?>:
+				&nbsp;Dump | Script: <?php echo basename($traces[0]['file']); ?>:
 				<?php echo $traces[0]['line']; ?> | Description: <?php echo $description; ?>
 				<br />
 				<div class = "dumpBoxValue">

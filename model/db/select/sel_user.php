@@ -18,6 +18,7 @@ function user_is_online($userid,$username,$confid,$REMOTE_ADDR,$HTTP_USER_AGENT,
 
 function exists_user($userid,$username) 
 {
+	$username = addcslashes( $username ,"'");
 	$response = NULL;
 	if ($userid && $username) 
 	{

@@ -1,11 +1,11 @@
 <?php
-function insert_person($name, $surname, $sex, $birthday, $acquaintance, $comments, $userid) {
+function insert_person($name, $surname, $sex, $birthday, $comments, $userid) {
     // global $mysqli;
     // $name = $mysqli->real_escape_string($name);
     // $surname = $mysqli->real_escape_string($surname);
     // $comments = $mysqli->real_escape_string(comments);
-	return Query("INSERT INTO `persons` (`userid`,`name`,`surname`,`sex`,`birthday`,`acquaintance`,`comments`) 
-	VALUES ('". $userid ."','" . $name . "','" . $surname . "','" . $sex . "','" . $birthday . "','" . $acquaintance . "','" . $comments . "')", debug_backtrace());
+	return Query("INSERT INTO `persons` (`userid`,`name`,`surname`,`sex`,`birthday`,`comments`) 
+	VALUES ('". $userid ."','" . $name . "','" . $surname . "','" . $sex . "','" . $birthday . "','" . $comments . "')", debug_backtrace());
 }
 
 function insert_alias($alias) {

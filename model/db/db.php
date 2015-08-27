@@ -32,7 +32,7 @@ function Query($sql, $backtrace, $database = "contacts"){
 
     /*Database connect*/
     include('connection.php');
-
+    
     $response = NULL;
 
     /*Start timer*/
@@ -40,6 +40,8 @@ function Query($sql, $backtrace, $database = "contacts"){
 
     if ($result = $mysqli->query($sql)){
         /*Successful Query execution*/
+
+        //dump($mysqli,"mysqli");
 
         /*Stop timer*/
         $msc = number_format( microtime(true) - $msc , 3);
@@ -59,13 +61,14 @@ function Query($sql, $backtrace, $database = "contacts"){
 
             /*Show SELECT query*/
             if($debug) 
-                showQuery("FETCH", $backtrace, $mysqli->host_info, $database, $sql, $result->num_rows ? $result->num_rows : 0, $msc, $result->num_rows ? $response : NULL);
+                showQuery("FETCH", $backtrace, $mysqli->host_info, $database, $sql, $result->num_rows ? $result->num_rows : 0, $mysqli->affected_rows ,$msc, $result->num_rows ? $response : NULL);
         }
         else{
              /*For INSERT, UPDATE, DELETE queries*/
-            $response = $mysqli->insert_id;
+            $response = $mysqli->insert_id ? $mysqli->insert_id : $mysqli->affected_rows;
+
             if($debug)
-                showQuery("AFFECT", $backtrace, $mysqli->host_info, $database, $sql, $mysqli->insert_id, $msc, $response);
+                showQuery("AFFECT", $backtrace, $mysqli->host_info, $database, $sql, $mysqli->insert_id, $mysqli->affected_rows ,$msc, $response);
         }
     }
     else{
@@ -73,7 +76,7 @@ function Query($sql, $backtrace, $database = "contacts"){
         $msc = number_format( microtime(true) - $msc , 2);
 
         /*Show failure query*/
-        showQuery("FAILURE", $backtrace, $mysqli->host_info, $database, $sql, 0, $msc, $mysqli->error);
+        showQuery("FAILURE", $backtrace, $mysqli->host_info, $database, $sql, 0, 0, $msc, $mysqli->error);
 
         /*Return error message*/
         $response = getSqlErrors($mysqli->error_list);
@@ -82,7 +85,7 @@ function Query($sql, $backtrace, $database = "contacts"){
         /*Close database connection*/
         $mysqli->close();
 
-        /*Return records in tabular or nothing if it fails.*/
+        /*Return records in tabular, nothing if not exists records or a message if it fails.*/
         return $response;
 }
 
@@ -94,7 +97,6 @@ function errorChecking($response){
     else
     {
         $_SESSION['error'] = "<b>db.php:</b><br />".$response;
-        echo $_SESSION['error'] ."<br />";
         return NULL;
     }
 }
@@ -111,5 +113,7 @@ include_once('insert/ins_phone.php');
 include_once('insert/ins_person.php');
 include_once('insert/ins_addresses.php');
 
-include_once('update/update.php');
 include_once('update/upt_user.php');
+include_once('update/upt_persons.php');
+
+include_once('delete/del_persons.php');
