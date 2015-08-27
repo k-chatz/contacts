@@ -12,18 +12,23 @@ if($isMobile && !empty($page)){
 	        if(!$isLoggedIn)	
 	        	include_once('view/user/login.php');
 	        break;
-		case "settings":
-		/*Account Management code*/
-	  		if($isLoggedIn)
-	        	include_once('view/content/settings.php');
-	        break;
 	    case "logout":
 				include_once('model/user/logout.php');
 				header("Location: index.php");
 				die();
 	        break;
+		case "settings":
+		/*Account Management code*/
+	  		if(!$isLoggedIn){
+				header("Location: index.php");
+				$_SESSION['error'] = "<b>index.php:</b><br>The page you are looking was not found!";
+				die();
+			}
+	        break;
 	     default:
-	     	echo "The page you are looking was not found!";
+	     	$_SESSION['error'] = "<b>index.php:</b><br>The page you are looking was not found!";
+	     	header("Location: index.php");
+			die();
 	}
 }
 else
@@ -42,6 +47,12 @@ else
 		for synchronization at Session variables and db Fields*/
 		update_user_status($userid, $isLoggedIn, $ip , $_SERVER['HTTP_USER_AGENT'] );
 
-		include_once('view/content/tabs.php');
+		if($page == "settings"){
+			include_once('view/content/settings.php');
+		}
+		else
+		{
+			include_once('view/content/tabs.php');
+		}
 	}
 ?>
