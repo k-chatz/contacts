@@ -17,12 +17,12 @@ function update_confid($userid, $confid) {
 		return NULL;
 }
 
-function update_user_status($userid = 0, $corfirm, $REMOTE_ADDR ,$HTTP_USER_AGENT)
-{ 
+function update_user_status($userid = 0, $isLoggedIn, $REMOTE_ADDR ,$HTTP_USER_AGENT)
+{
 	if($userid)
 	{
 		return Query("UPDATE users 
-		SET lastactive = NOW() , CURRENT_REMOTE_ADDR = '".$REMOTE_ADDR."' , CURRENT_HTTP_USER_AGENT = '".$HTTP_USER_AGENT."'
+		SET lastactive = " . ($isLoggedIn ?  "NOW()" : "Logout") . ", CURRENT_REMOTE_ADDR = '".$REMOTE_ADDR."' , CURRENT_HTTP_USER_AGENT = '".$HTTP_USER_AGENT."'
 		WHERE (userid = ".$userid.") LIMIT 1", debug_backtrace());
 	}
 }

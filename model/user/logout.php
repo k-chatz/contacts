@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']){
 
-	update_field_from_table( "users" , "lastactive" , "'Logout'" , "userid" , $userid );
+	update_user_status($_SESSION['userid'], 0, $_SESSION['REMOTE_ADDR'] , $_SERVER['HTTP_USER_AGENT'] );
 
 	update_confid( $userid , md5(mt_rand()) );
 
