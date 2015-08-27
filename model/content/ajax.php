@@ -13,6 +13,12 @@ include_once('../debug.php');
 include_once('../../view/view.php');
 include_once('../../view/alerts.php');
 
+//dump($_SESSION,"SESSION");
+//dump($_POST,"POST");
+//dump($userid,"userid");
+//dump($username,"username");
+//dump($confid,"confid");
+
 $ip = client_ip();
 
 $userid 	= isset($_SESSION['userid'])	? $_SESSION['userid'] 		: 0;
@@ -20,12 +26,6 @@ $username 	= isset($_SESSION['username'])	? $_SESSION['username']		: 0;
 $confid 	= isset($_POST['cnf'])			? trim($_POST['cnf'] )		: 0;
 $timeout	= isset($_SESSION['timeout']) 	? $_SESSION['timeout']		: 0;
 $isLoggedIn = isset($_SESSION['isLoggedIn'])? $_SESSION['isLoggedIn']	: 0;
-
-//dump($_SESSION,"SESSION");
-//dump($_POST,"POST");
-//dump($userid,"userid");
-//dump($username,"username");
-//dump($confid,"confid");
 
 if($isLoggedIn && $userid && $Records = user_is_online( $userid , $username , $confid , $ip , $_SERVER['HTTP_USER_AGENT'] , $timeout)){
 	update_user_status($userid, $isLoggedIn, $ip , $_SERVER['HTTP_USER_AGENT'] );
@@ -47,22 +47,30 @@ if($isLoggedIn && $userid && $Records = user_is_online( $userid , $username , $c
 			include('../../view/content/person.php');
 			break;
 		default:
-		    alert("<b>ajax.php:</b><br />Err::Ajax.php:No action here","Error");
+			$_SESSION['error'] = "<b>ajax.php:</b><br />Err::Ajax.php:No action here";
 	}
 }
 else
 {
 	//header("HTTP/1.0 400 Bad Request");
-	alert("<b>ajax.php:</b><br />Session expired, <a href='index.php?p=login' title='System Login'>login</a> again!","Warning");
+	$_SESSION['warning'] = "<b>ajax.php:</b><br />Session expired, <a href='index.php?p=login' title='System Login'>login</a> again!";
 	unset($_SESSION['userid']);
 	unset($_SESSION['username']);
 	unset($_SESSION['isLoggedIn']);
 }
-	$ms = number_format( microtime(true) - $ms , 2);
 
-	if(isset($_SESSION['debug']) && $_SESSION['debug'] == "on"){
-		script_complete_time($ms);
-	}
+/*To display alert messages (if these exists)*/
+session_alert();
 
-	unset($_SESSION['Queries']);
+$ms = number_format( microtime(true) - $ms , 2);
+
+if(isset($_SESSION['debug']) && $_SESSION['debug'] == "on"){
+	script_complete_time($ms);
+}
+
+//$x = insert_person("nametest", "surnametest", "male", "", "comments", 1);
+//updatePerson($x ,"test");
+//deletePerson($x);
+
+unset($_SESSION['Queries']);
 ?>

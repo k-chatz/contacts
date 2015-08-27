@@ -48,12 +48,10 @@ if ($username && $userpass){
                 case "Locked";
                         echo "<br />case: \"Locked\"<br />";
                         $_SESSION['warning'] = "<b>login.php:</b><br />Account: ". $username." is disabled from administrator!";
-                        echo $_SESSION['warning'];
                         break;
                 default;
                         echo "<br />case: \"default\"<br />";
                         $_SESSION['notice'] = "<b>login.php:</b><br />Your account is disabled! To activate and login in your account hit the link that was sent to your inbox.";
-                        echo $_SESSION['notice'];
                         break;
             }
         }
@@ -61,21 +59,18 @@ if ($username && $userpass){
         {
             $failure = 1;
             $_SESSION['warning'] = "<b>login.php:</b><br />You have entered wrong password, try again!";
-            echo $_SESSION['warning'];
         }
     }
     else
     {
         $failure = 1;
         $_SESSION['warning'] = "<b>login.php:</b><br>Could not find a user with this account: " . $username . ", try again or <a href='index.php?register'>register</a> with your own email!";
-        echo $_SESSION['warning'];
     }
 }
 else
 {
     $failure = 1;
     $_SESSION['warning'] = "<b>login.php:</b><br>You must fill in both fields to continue!";
-    echo $_SESSION['warning'];
 }
 $root = rootPath();
 $nextLocation = $failure ? $root ."index.php?p=login" : $root ."index.php?cnf=".$_POST['confid'];

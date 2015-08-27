@@ -39,46 +39,39 @@ if(1)
 					if (mail_utf8($_POST['useremail_1'], "Account validation MyCnts", $message))
 					{
 						$_SESSION['success'] = "<b>register.php:</b><br>Thanks for signing up! We've sent an email account activation at: <b>'" . $username . "'</b>";
-						echo $_SESSION['success'];
 					}
 					else 
 					{
 						$_SESSION['error'] = "<b>register.php:</b><br>Ooops! Something went wrong with sending e-mail!";
-						echo $_SESSION['error'];
 					}
 				}
 				else
 				{
 					$failure = 1;
 					$_SESSION['error'] = "<b>register.php:</b><br>Ooops! The registration process failed!";
-					echo $_SESSION['error'];
 				}
 			}
 			else
 			{
 				$failure = 1;
 				$_SESSION['warning'] = "<b>register.php:</b><br>The user with e-mail '" . $username . "' already exists, try again with another username!";
-				echo $_SESSION['warning'];
 			}
 		}
 		else
 		{
 			$failure = 1;
 			$_SESSION['warning'] = "<b>register.php:</b><br>Incorrect keying in confirmation fields, try again!";
-			echo $_SESSION['warning'];
 		}
 	}
 	else
 	{
 		$failure = 1;
 		$_SESSION['warning'] = "<b>register.php:</b><br>You must fill in all required fields!";
-		echo $_SESSION['warning'];
 	}
 }
 else
 {
 	$_SESSION['notice'] = "<b>register.php:</b><br>This project is not complete yet! User registration  is temporarily disabled.";
-	echo $_SESSION['notice'];	
 }
 $root = rootPath();
 $nextLocation = $failure ? $root ."index.php?p=register" : $root ."index.php?p=login";

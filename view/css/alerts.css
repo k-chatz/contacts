@@ -2,6 +2,7 @@ div#Notice {
     color: black;
     padding: 2px;
     margin: 0px 0px 2px 0px;
+    border: 3px solid rgba(0, 150, 251, 0.3);
     overflow: auto;
     font-family: monospace;
     background: blue;
@@ -20,6 +21,7 @@ div#Success {
     color: black;
     padding: 2px;
     margin: 0px 0px 2px 0px;
+    border: 3px solid rgba(105, 255, 0, 0.3);
     overflow: auto;
     font-family: monospace;
     background: #d2ff52;
@@ -36,8 +38,10 @@ div#Warning {
     color: black;
     padding: 2px;
     margin: 0px 0px 2px 0px;
+    border: 3px solid rgba(255, 235, 0, 0.3);
 	overflow: auto;
     font-family: monospace;
+
 	background: #ffd65e;
 	background: -moz-linear-gradient(top, #ffd65e 0%, #febf04 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd65e), color-stop(100%,#febf04));
@@ -52,9 +56,9 @@ div#Error {
     color: black;
     padding: 2px;
     margin: 0px 0px 2px 0px;
+    border: 3px solid rgba(251, 55, 0, 0.3);
     overflow: auto;
     font-family: monospace;
-    background: red;
 
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff8777+0,fd5451+100 */
     background: rgb(255,135,119); /* Old browsers */
