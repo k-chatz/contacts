@@ -52,7 +52,7 @@ session_alert();
 if($confid)
 {
 ?>
-	<div id="CNF" style="display: none;"><?php echo $confid; ?></div>
+	<div id="cnf" style="display: none;"><?php echo $confid; ?></div>
 <?php
 }
 ?>

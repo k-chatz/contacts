@@ -10,7 +10,7 @@ else
     $pages = round( $pages );
 	
 ?>
-<div id="ITM" style="display: none;"><?php echo $items; ?></div>
+<div id="itm" style="display: none;"><?php echo $items; ?></div>
 
 <div id="toolbar-1" class="yui3-toolbar">
     <span id="add-btn" class="yui3-toolbar-button first-child"><input type="button" name="btn-add" value="Add"></span>
@@ -19,7 +19,7 @@ else
     <span id="save-btn" class="yui3-toolbar-button"><input type="button" name="btn-save" value="Save"></span>
 </div>  
 
-<div id="ajax_results"><!--*Ajax*--></div>
+<div id="ajaxPersons"><!--*Ajax*--></div>
 
 <div class="pagination">
     <div class="page_loader">

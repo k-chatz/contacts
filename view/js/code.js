@@ -1,3 +1,12 @@
+function ajax(data, resElem){
+	return $.ajax({ type: "POST", url: "model/content/ajax.php", data: data, dataType: "html",
+		success: function(response){ $(resElem).html(response); }}
+	);
+	request.fail(function(jqXHR, textStatus){
+	  alert( "Request failed: " + textStatus);
+	});
+}
+
 jQuery(document).ready(function(){
 	jQuery('.T').hide();
 	jQuery('.SUBT').hide();
@@ -16,11 +25,13 @@ jQuery(document).ready(function(){
 		return false; //Για να μην "κλωτσάει προς τα πάνω η οθόνη όταν πατάμε το link.
 	});
 
+	/*Όταν ο χρήστης πατάει για να εισάγει μια νέα επαφή.*/
 	$( "#add-btn" ).on( "click", add_person);	
 
-	//Otan o xristis pataei na anoixei mia epafi
-    jQuery( '#ajax_results' ).on( "click", ".person_label", get_person );
+	/*Όταν ο χρήστης πατάει για να ανοίξει μια επαφή.*/
+    jQuery( '#ajaxPersons' ).on( "click", ".person_label", get_person );
 	
+
     var max_pages = jQuery( '#pagination_max' ).attr( 'data-max-page' );
 
     jQuery(document).keydown(function(event) {
@@ -33,7 +44,9 @@ jQuery(document).ready(function(){
         }
     });
 
-    /* As soon as JQuery Mobile will be available, uncomment this
+    /* 
+	swipeleft - swiperight
+    As soon as JQuery Mobile will be available, uncomment this
     jQuery( "body" ).on( "swiperight", function(){
         next_page( max_pages ); 
     });
@@ -48,63 +61,53 @@ jQuery(document).ready(function(){
 		}
 	});
 
-	//Gia tin proti fora pou tha anoigei prepei na klithei i change_page(1)
-	//gia emfanistei i proti selida.
-    change_page( 1 );
-
-    //jQuery( 'html' ).niceScroll( { cursorcolor : "#FFB530" } );
-    //jQuery( "div[id^='ascrail']" ).show();
-	
+    /*Αν έχει δοθεί κωδικός cnf στη σελίδα τότε γίνονται τα ajax.*/
+	if( jQuery( '#cnf' ).length ){
+    	change_page(1);
+	}
 });
 
 function get_person() {
-	var CNF = $( '#CNF' ).html(); 	//ctrl
-	var PID = $( this ).attr( "id" );
-	
-	PID = PID.substring( "pid".length );
-    var loader	= $( '#pid'+PID+' > .person_label_tools > .loader' );
-	
-    if ( $( this ).next().css( "display" ) != "none" ) {		//An to Person_Container einai energo tote na klisei
-		$( '.Person_Container' ).css("backgroundColor","#black");
+	var cnf = $( '#cnf' ).html(); 	//index.php
+	var pid = $( this ).attr( "id" );
+	pid = pid.substring( "pid".length );
+    var loader	= $( '#pid'+pid+' > .person_label_tools > .loader' );
+	var isActive = $( this ).next().css("display") != "none" ;
+
+    if (isActive){
+		/*
+		 Αν τα στοιχεία της επαφής είναι ορατά, τότε να γίνουν αόρατα.
+		*/
+		$( '.Person_Container' ).css("backgroundColor", "#black");
 		$( '.Person_Container' ).slideUp();
         $( this ).next().html( '' ).slideUp( function(){
 			$( '.person_label' ).removeClass( "person_label_active" );
 		});
-    }else{														//An Person_Container den einai energo tote na ginei ajax kai na anoixei
+    }
+    else
+    {
+	    /*
+	     Αν τα στοιχεία της επαφής δεν είναι ορατά τότε να γίνει ajax request και να
+	     εμφανιστεί η απάντηση, δηλαδή τα στοιχεία.
+	    */
 		$( '.person_label' ).removeClass( "person_label_active" );
 		loader.show();
-		$.ajax( {
-			type: "POST",
-			url: "model/content/ajax.php",
-			data: { act: "get_person", cnf: CNF , pid: PID },
-			success: function( response ) {
-				var person = $( '#pid' + PID ).next();
-				$( person ).html( response );
-				$( person ).slideDown('slow', function(){
-					loader.hide();
-				});
-			}
-		});
+
+		var person = $( '#pid' + pid ).next();
+		request = ajax( { act: "get_person", cnf: cnf , pid: pid } , person );
+		request.done(function(msg){ $( person ).slideDown('slow', function(){ loader.hide(); }); });
 		$( this ).addClass( "person_label_active" );
 		$( '.Person_Container' ).slideUp();
 	}
 }
 
 function change_page( PG ) {
-	var CNF = $( '#CNF' ).html();	//ctrl
-	var ITM = $( '#ITM' ).html();	//tab1
+	var cnf = $( '#cnf' ).html();	//index.php
+	var itm = $( '#itm' ).html();	//tab1.php
     var loader = $( '.pagination > .page_loader > .loader_bowlG' );
-	
 	loader.show();
-    var ajax = $.ajax({
-		type: "POST",
-		url: "model/content/ajax.php",
-		data: { act: "get_persons", cnf: CNF , pg: PG ,itm: ITM },
-		success: function( response ) {
-            $( '#ajax_results' ).html( response );
-            loader.hide();
-        }
-    });
+	request = ajax({ act: "get_persons", cnf: cnf , pg: PG ,itm: itm }, "#ajaxPersons" );
+	request.done(function(msg){ loader.hide(); });
 
     $( '.cnts_page' ).removeClass( "cnts_page_active" );
     $( this ).addClass( "cnts_page_active" );
@@ -164,9 +167,10 @@ function fix_height(left,right){
 }
 
 function add_person(){
-alert("function add_person");
-
- $( '#ajax_results' ).html( "<b>test</b>" );
-
-
+	data = { act: "add_person", cnf: $( '#cnf' ).html() };
+	request = ajax( data , "#ajaxPersons");
+	request.done(function(msg){ /*Success code here*/ });
+	request.fail(function( jqXHR, textStatus ) {
+	  alert( "Request failed: " + textStatus );
+	});
 }

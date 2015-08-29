@@ -23,7 +23,7 @@ div.body{
 }
 
 a {
-    color: white;
+    color: #DED89A;
 }
 
 .close {
@@ -53,25 +53,17 @@ font: caption;
 }
 
 div#welcome {
-    border-style: solid;
-    border-width: 5px;
-    border-color: rgba(34, 45, 66, 0.44);
     font: small-caption;
-    margin: 0px;
     padding: 5px;
-    background: #3b679e;
-    background: -moz-linear-gradient(left, #3b679e 0%, #207cca 25%, #207cca 25%, #2b88d9 26%, #2b88d9 26%, #207cca 49%, #7db9e8 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#3b679e), color-stop(25%,#207cca), color-stop(25%,#207cca), color-stop(26%,#2b88d9), color-stop(26%,#2b88d9), color-stop(49%,#207cca), color-stop(100%,#7db9e8));
-    background: -webkit-linear-gradient(left, #3b679e 0%,#207cca 25%,#207cca 25%,#2b88d9 26%,#2b88d9 26%,#207cca 49%,#7db9e8 100%);
-    background: -o-linear-gradient(left, #3b679e 0%,#207cca 25%,#207cca 25%,#2b88d9 26%,#2b88d9 26%,#207cca 49%,#7db9e8 100%);
-    background: -ms-linear-gradient(left, #3b679e 0%,#207cca 25%,#207cca 25%,#2b88d9 26%,#2b88d9 26%,#207cca 49%,#7db9e8 100%);
-    background: linear-gradient(to right, rgba(59, 122, 158, 0.5) 0%,rgba(64, 155, 208, 0.5) 25%,rgba(43, 159, 217, 0.5));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', endColorstr='#7db9e8',GradientType=1 );
+    color: #FFFFFF;
+    text-shadow: 0px 0px 1px rgb(255, 210, 48);
+    background: #1E1E1E;
 }
 
 img#WelcIMG {
     float: left;
     margin: 1px 7px 1px 1px;
+    padding: 10px 15px 0px 10px;
 }
 
 div.person_label{

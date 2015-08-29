@@ -13,11 +13,12 @@ include_once('../debug.php');
 include_once('../../view/view.php');
 include_once('../../view/alerts.php');
 
-//dump($_SESSION,"SESSION");
-//dump($_POST,"POST");
-//dump($userid,"userid");
-//dump($username,"username");
-//dump($confid,"confid");
+$debug = (isset($_SESSION['debug']) && $_SESSION['debug'] == "on") ? 1 : 0;
+
+if($debug){
+	//dump($_SESSION,"SESSION");
+	dump($_POST,"POST");
+}
 
 $ip = client_ip();
 
@@ -64,13 +65,11 @@ session_alert();
 
 $ms = number_format( microtime(true) - $ms , 2);
 
-if(isset($_SESSION['debug']) && $_SESSION['debug'] == "on"){
+if($debug){
 	script_complete_time($ms);
 }
 
-//$x = insert_person("nametest", "surnametest", "male", "", "comments", 1);
-//updatePerson($x ,"test");
-//deletePerson($x);
-
 unset($_SESSION['Queries']);
+
+//header("HTTP/1.0 400 Bad Request");
 ?>
