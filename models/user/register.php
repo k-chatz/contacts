@@ -74,13 +74,6 @@ else
 {
 	$_SESSION['warning'] = "<b>register.php:</b><br>This project is not complete yet! User registration  is temporarily disabled.";
 }
-$root = rootPath();
-$nextLocation = $failure ? $root ."index.php?p=register" : $root ."index.php?p=login";
 
-if($debug){
-    dump($_SESSION , "SESSION");
-    echo "<br />Manually redirect to <a href=". $nextLocation ." \"title=\"index\">". $nextLocation ."</a>";
-}
-else
-    header("Location: ". $nextLocation);
+redirect($failure ? "?p=register" : "?p=login", $debug);
 ?>

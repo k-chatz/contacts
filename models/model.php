@@ -8,8 +8,17 @@ function rootPath($path = ""){
 	return $_SERVER['REQUEST_SCHEME']."://".($_SERVER['SERVER_NAME'] == "::1" ? "localhost" : $_SERVER['SERVER_NAME'] ).":".$_SERVER['SERVER_PORT'].$root.$path;
 }
 
-function get_string_of_streets_from_address($address)
-{
+function redirect($location, $debug = 0){
+	$nextLocation = rootPath() . $location;
+	if($debug){
+	    dump($_SESSION , "SESSION");
+	    echo "<br />Manually redirect to <a href=". $nextLocation ." \"title=\"index\">". $nextLocation ."</a>";
+	}
+	else
+	    header("Location: ". $nextLocation);
+}
+
+function get_string_of_streets_from_address($address){
 	$streets = "";
 	$i       = 0;
 	

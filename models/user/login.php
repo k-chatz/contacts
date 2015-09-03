@@ -73,13 +73,6 @@ else
     $failure = 1;
     $_SESSION['warning'] = "<b>login.php:</b><br>You must fill in both fields to continue!";
 }
-$root = rootPath();
-$nextLocation = $failure ? $root ."index.php?p=login" : $root ."index.php?cnf=".$_POST['confid'];
 
-if($debug){
-    dump($_SESSION , "SESSION");
-    echo "<br />Manually redirect to <a href=". $nextLocation ." \"title=\"index\">". $nextLocation ."</a>";
-}
-else
-    header("Location: ". $nextLocation);
+redirect($failure ? "?p=login" : "?cnf=" . $_POST['confid'], $debug);
 ?>

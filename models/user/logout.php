@@ -25,14 +25,8 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']){
 	$_SESSION['notice'] = "<b>logout.php:</b><br />Already offline!";
 }
 
-$root = rootPath();
-$nextLocation = $root ."index.php";
+redirect("", $debug);
 
-if($debug){
-    dump($_SESSION , "SESSION");
-    echo "<br />Manually redirect to <a href=". $nextLocation ." \"title=\"index\">". $nextLocation ."</a>";
-}
-else
-    header("Location: ". $nextLocation);
 die();
+
 ?>
