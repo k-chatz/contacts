@@ -1,10 +1,13 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/controllers/db.php');
 
-function uploadFile($fileName,$fileSize,$fileType,$content){
-	$response = Query("INSERT INTO upload (name, size, type, content) 
-		VALUES ('$fileName', '$fileSize', '$fileType', '$content')", debug_backtrace());
-	return errorChecking($response);
+function uploadFile($userid, $fileName,$fileSize,$fileType,$content){
+	if($userid){
+		$response = Query("INSERT INTO upload (userid, name, size, type, content) 
+			VALUES ($userid, '$fileName', '$fileSize', '$fileType', '$content')", debug_backtrace());
+		return errorChecking($response);
+	}
+	return NULL;
 }
 
 function insert_relation($table1, $table2, $id1, $id2) {

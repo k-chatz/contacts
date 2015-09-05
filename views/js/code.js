@@ -66,32 +66,16 @@ jQuery(document).ready(function(){
     	change_page(1);
 	}
 
-// var x = $("#uploadForm").submit(function(event){
-
-// 	var formData = JSON.stringify($("#uploadForm"));
-
-// 	//console.log(formData);
-
-// 	data = { cnf: $( '#cnf' ).html() , act: "upload_file" , MAX_FILE_SIZE: "2000000", upload: " Upload ", userfile: "Eimai to data" };
-// 	console.log(data);
-
-// 	upload_file(data);
-
-// 	event.preventDefault();
-// });
-
-
  var x = $("#downloadForm").submit(function(event){
+ 	var fid = $('#fid').val();
 
- 	data = { cnf: $( '#cnf' ).html() , act: "download_file", fid: 3};
+ 	data = { cnf: $( '#cnf' ).html() , act: "download_file", fid: fid};
  	console.log(event);
 
  	request = ajax( data , "#downloadRes");
 
  	event.preventDefault();
  });
-
-
 });
 
 function upload_file(data)

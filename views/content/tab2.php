@@ -2,8 +2,8 @@
     <input type="hidden" name="cnf" value="<?php echo $confid ?>">
     <input type="hidden" name="act" value="upload_file">
 
-    <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-    <input type="file"   name="userfile"  id="userfile"> 
+    <input type="hidden" name="MAX_FILE_SIZE" value="5000000">
+    <input type="file"   name="file"  id="userfile"> 
     <input type="submit" name="upload"  class="box" id="upload" value=" Upload ">
 </form>
 

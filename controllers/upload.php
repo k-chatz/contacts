@@ -1,44 +1,66 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/models/content/insert.php');
 
+/* 
+ * Comment at php.net manual. 
+ * Url: http://php.net/manual/en/features.file-upload.errors.php.
+ * This code is a fixed version of a note originally submitted by (Thalent, Michiel Thalen) on 04-Mar-2009
+*/
+function codeToMessage($code){ 
+    switch ($code){
+        case UPLOAD_ERR_INI_SIZE: 
+            $message = "The uploaded file exceeds the upload_max_filesize directive in php.ini"; 
+            break;
+        case UPLOAD_ERR_FORM_SIZE: 
+            $message = "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"; 
+            break;
+        case UPLOAD_ERR_PARTIAL: 
+            $message = "The uploaded file was only partially uploaded"; 
+            break;
+        case UPLOAD_ERR_NO_FILE: 
+            $message = "No file was uploaded"; 
+            break;
+        case UPLOAD_ERR_NO_TMP_DIR: 
+            $message = "Missing a temporary folder"; 
+            break;
+        case UPLOAD_ERR_CANT_WRITE: 
+            $message = "Failed to write file to disk"; 
+            break;
+        case UPLOAD_ERR_EXTENSION: 
+            $message = "File upload stopped by extension"; 
+            break;
+        default:
+            $message = "Unknown upload error"; 
+            break;
+    }
+    return $message;
+}
+
 if($debug){
+	/*Head of the page*/
+	include_once ($_SERVER['DOCUMENT_ROOT'] . '/Contacts/views/building/head.php');
 	dump($_FILES,"Files");
 }
 
 if(isset($_FILES)){
-	if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0){
+	$error = $_FILES['file']['error'];
+	if(isset($_POST['upload']) && $_FILES['file']['size'] > 0){
 
-		$fileName = $_FILES['userfile']['name'];
-		$tmpName  = $_FILES['userfile']['tmp_name'];
-		$fileSize = $_FILES['userfile']['size'];
-		$fileType = $_FILES['userfile']['type'];
+			$fileName = $_FILES['file']['name'];
 
-		$fp      = fopen($tmpName, 'r');
-		$content = fread($fp, filesize($tmpName));
-		$content = addslashes($content);
-		fclose($fp);
+		 	$type = pathinfo( $_FILES['file']['tmp_name'], PATHINFO_EXTENSION);
+		 	$data = file_get_contents( $_FILES['file']['tmp_name'] );
 
+			/*The file will be save as base64 encode.*/
+		 	$content = base64_encode($data);
 
+			if(!get_magic_quotes_gpc()){
+			    $fileName = addslashes($fileName);
+			}
 
-		{
-			/*Πρέπει να μπει συνθήκη ώστε η μετατροπή σε base64 να γίνεται μόνο αν το αρχείο είναι τύπου εικόνας.*/
-			//$image = $tmpName;
-			//$type = pathinfo($image, PATHINFO_EXTENSION);
-			//$data = file_get_contents($image);
-			//$dataUri = 'data:image/' . $type . ';base64,' . base64_encode($data);
-			//$content = $dataUri;
-		}
-
-		if(!get_magic_quotes_gpc()){
-		    $fileName = addslashes($fileName);
-		}
-
-		if( uploadFile($fileName,$fileSize,$fileType,$content) ){
-			$_SESSION['success'] = "<b>upload.php:</b><br>file '$fileName' was uploaded successfully.";
-		}
-		else{
-			$_SESSION['error'] = "<b>upload.php:</b><br>There was a problem during the uploading file '$fileName'!";
-		}
+			if( uploadFile($userid, $fileName, $_FILES['file']['size'], $_FILES['file']['type'], $content) ){
+				$_SESSION['success'] = ($debug ? "<b>upload.php:</b><br />" : "") . "File '$fileName' was uploaded successfully at the database.";
+			}
 	}
 	else{
 		$_SESSION['error'] = "<b>upload.php:</b><br>There was a problem during the uploading file!";

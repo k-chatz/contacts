@@ -2,9 +2,9 @@
 include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/models/content/sel_persons.php');
 
 function put_person($pid, $imageBase64, $sex, $name, $surname){
-?><div class='Person'>												
+?><div class='Person'>
 	<div id="pid<?php echo $pid; ?>" class="person_label">
-		<div class="person_label_icon" style="background-image: url('<?php echo ($imageBase64 != NULL ? $imageBase64 : "view/icons/businessman94.png") ?>');"></div>
+		<div class="person_label_icon" style="background-image: url('<?php echo ($imageBase64 != NULL ? "data:image;base64,". $imageBase64 : "views/icons/businessman94.png") ?>');"></div>
 		<div class="person_label_content"><b><?php
 		echo ($name ? $name . " " : "... ") . ($surname ? $surname : "...") ;
 		?></b>

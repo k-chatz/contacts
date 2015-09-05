@@ -21,13 +21,13 @@ function put_field( $icon , $value = "" ){
 }
 
 function put_Separating( $icon , $value = "" ){ 
-	?>
+?>
 	<div class="Person_Separating_SubContent">
 		<div class="Person_SeparatingField_Icon">
 			<img alt="Separating icon" src="views/icons/<?php echo $icon ? $icon : "no_icon.png"; ?>" height="24" >
 		</div>
 		<div class="Person_SeparatingField"><?php echo $value ? $value : "&nbsp;"; ?></div>
-	</div>	
+	</div>
 <?php
 } 
 
@@ -44,7 +44,7 @@ function put_info_for_person($person){
 				if (NULL != $person['imageBase64'])
 				{
 					//put_Separating( "camera44.png" , $person['photopath'] ); ?>
-					<div class="photo" style="background-image: url('<?php echo $person['imageBase64']; ?>');"></div>
+					<div class="photo" style="background-image: url('<?php echo "data:image;base64,". $person['imageBase64']; ?>');"></div>
 				<?php
 				}
 				?>
