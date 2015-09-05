@@ -5,8 +5,8 @@
 	<div id="WelcContentDiv" class="link">
 		Welcome to contacts app! <br />
 		In this app you can organize your contacts with a simple way. 
-		To do this, you need to <a href="index.php?p=register" title="Registration">register</a> 
+		To do this, you need to <a href="?p=register" title="Registration">register</a> 
 		, or if you have already completed this 
-		step then you simply <a href="index.php?p=login" title="System Login">login</a> at the system.
+		step then you simply <a href="?p=login" title="System Login">login</a> at the system.
 	</div>
 </div>

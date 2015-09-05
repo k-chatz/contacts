@@ -5,6 +5,7 @@ margin: 2px;
 min-width: 270px;
 //min-height: 400px;
 border-top: 1px solid black;
+/* max-width: 350px; */
 }
 
 *{
@@ -34,7 +35,6 @@ font-family: Arial Black;
 
 div.content {
     border-top: 1px solid #0F0F1B;
-	padding: 0px 0px 1px 0px;
     background-color: #3E4D66;
 }
  
@@ -43,21 +43,21 @@ padding: 4px 2px 4px 2px;
 }
 
 fieldset{
-background-color: rgba(18, 51, 176, 0.1);
-border-style: solid;
-border-width: 1px;
-border-color: rgba(0, 0, 0, 0.4);
-border-radius: 0.2em;
-margin: 5px;
-font: caption;
+    background-color: rgba(255, 255, 255, 0.10);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.2);
+    margin: 3px 0px 0px 0px;
+    padding: 5px 14px 5px 8px;
 }
 
 div#welcome {
     font: small-caption;
     padding: 5px;
-    color: #FFFFFF;
-    text-shadow: 2px 2px 1px rgb(0, 0, 0);
+    color: #D6D6D6;
+    text-shadow: 1px 1px 1px rgb(9, 23, 36);
     background: #1E1E1E;
+    min-height: 70px;
 }
 
 img#WelcIMG {
@@ -106,8 +106,8 @@ div.person_label_icon {
     width: 30px;
     height: 30px;
     text-align: center;
-    border-radius: 1.3em;
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 1em;
+    border: 1px solid rgb(20, 43, 62);
     background-position: center;
     background-repeat: space;
     background-size: 100% 100%;

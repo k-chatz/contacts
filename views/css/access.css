@@ -1,7 +1,7 @@
 .userform {
-color: white;
-background: #3E4D66;
-padding: 1px;
+	color: #CDCDCE;
+	background: rgba(30, 30, 30, 0.8);
+	padding: 1px 0px 5px 0px;
 }
 
 form#userform > input[type="text"], form#userform > input[type="password"]  , form#userform > input[type="email"]{
@@ -25,7 +25,6 @@ form#userform > input[type="reset"]{
 form#userform > input[type="submit"]{
 	width: 50%;
 	float: right;
-	margin: 3px 0px 0px 0px;
 }
 
 form#userform > input[type="reset"] ,form#userform > input[type="submit"]{

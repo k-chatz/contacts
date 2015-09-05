@@ -51,9 +51,10 @@ function exists_activecode($username, $active) {
 	if ($username) {
 		$response = Query("SELECT userid FROM users 
 		WHERE username = '". $username ."' AND active = '". $active ."'", debug_backtrace());
-	} else
+		return errorChecking($response);
+	}
+	else
 		return NULL;
-	return errorChecking($response);
 }
 
 function get_option( $var_name, $user_id = 0){
