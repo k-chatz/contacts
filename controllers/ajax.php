@@ -5,6 +5,7 @@ $ms = microtime(true);
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+session_name("CntId");
 session_start();
 
 include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/models/model.php');
@@ -16,17 +17,17 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/models/user/upt_user.php');
 $debug = (isset($_SESSION['debug']) && $_SESSION['debug'] == "on") ? 1 : 0;
 
 if($debug){
-	//dump($_SESSION,"SESSION");
+	dump($_SESSION,"SESSION");
 	dump($_POST,"POST");
 }
 
 $ip = client_ip();
 
-$userid 	= isset($_SESSION['userid'])	? $_SESSION['userid'] 		: 0;
-$username 	= isset($_SESSION['username'])	? $_SESSION['username']		: 0;
-$confid 	= isset($_POST['cnf'])			? trim($_POST['cnf'] )		: 0;
-$timeout	= isset($_SESSION['timeout']) 	? $_SESSION['timeout']		: 0;
-$isLoggedIn = isset($_SESSION['isLoggedIn'])? $_SESSION['isLoggedIn']	: 0;
+$confid = isset($_POST['cnf']) ? trim($_POST['cnf'] ) : 0;
+$userid = isset($_SESSION['userid']) ? $_SESSION['userid'] : 0;
+$timeout = isset($_SESSION['timeout']) ? $_SESSION['timeout'] : 0;
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : 0;
+$isLoggedIn = isset($_SESSION['isLoggedIn']) ? $_SESSION['isLoggedIn'] : 0;
 
 if($isLoggedIn && $userid && $Records = user_is_online( $userid , $username , $confid , $ip , $_SERVER['HTTP_USER_AGENT'] , $timeout)){
 	update_user_status($userid, $isLoggedIn, $ip , $_SERVER['HTTP_USER_AGENT'] );
@@ -57,14 +58,15 @@ if($isLoggedIn && $userid && $Records = user_is_online( $userid , $username , $c
 			include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/controllers/download.php');
 			break;
 		default:
-			$_SESSION['error'] = "<b>ajax.php:</b><br />Err:: Not selected operation !";
+			$_SESSION['error'] = ($debug ? "<b>error.php:</b><br />" : "") . "Err:: Not selected operation !";
 	}
 }
 else
 {
 	//header("HTTP/1.0 400 Bad Request");
-	$_SESSION['warning'] = "<b>ajax.php:</b><br />Session expired, <a href='index.php?p=login' title='System Login'>login</a> again!";
+	$_SESSION['warning'] = ($debug ? "<b>ajax.php:</b><br />" : "") . "Session expired, <a href='index.php?p=login' title='System Login'>login</a> again!";
 	unset($_SESSION['userid']);
+	unset($_SESSION['timeout']);
 	unset($_SESSION['username']);
 	unset($_SESSION['isLoggedIn']);
 }
@@ -75,6 +77,7 @@ session_alert();
 $ms = number_format( microtime(true) - $ms , 2);
 
 if($debug){
+	dump($_SESSION,"SESSION");
 	script_complete_time($ms);
 }
 

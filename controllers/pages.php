@@ -21,12 +21,12 @@ if($isMobile && !empty($page)){
 		/*Account Management code*/
 	  		if(!$isLoggedIn){
 				header("Location: index.php");
-				$_SESSION['error'] = "<b>index.php:</b><br>The page you are looking was not found!";
+				$_SESSION['error'] = ($debug ? "<b>pages.php:</b><br />" : "") . "The page you are looking was not found!";
 				die();
 			}
 	        break;
 	     default:
-	     	$_SESSION['error'] = "<b>index.php:</b><br>The page you are looking was not found!";
+	     	$_SESSION['error'] = ($debug ? "<b>pages.php:</b><br />" : "") . "The page you are looking was not found!";
 	     	header("Location: index.php");
 			die();
 	}

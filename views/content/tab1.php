@@ -2,8 +2,9 @@
 include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/models/content/sel_persons.php');
 
 $items = get_option( "items_per_page", $userid );
+$items = $items ? $items : 5;
 $contacts = get_person_count( $userid );
-$pages = ($contacts ? $contacts : 1) / ($items ? $items : 20);
+$pages = ($contacts ? $contacts : 1) / $items;
 
 if (!$pages) $pages = 1;
 if ( $pages - round( $pages ) > 0 )
@@ -13,13 +14,6 @@ else
 	
 ?>
 <div id="itm" style="display: none;"><?php echo $items; ?></div>
-
-<div id="toolbar-1" class="yui3-toolbar">
-    <span id="add-btn" class="yui3-toolbar-button first-child"><input type="button" name="btn-add" value="Add"></span>
-    <span id="edit-btn" class="yui3-toolbar-button"><input type="button" name="btn-edit" value="Edit"></span>
-    <span id="delete-btn" class="yui3-toolbar-button"><input type="button" name="btn-delete" value="Delete"></span>
-    <span id="save-btn" class="yui3-toolbar-button"><input type="button" name="btn-save" value="Save"></span>
-</div>  
 
 <div id="ajaxPersons"><!--*Ajax*--></div>
 

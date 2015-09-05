@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 ob_start();
 
+session_name("CntId");
 session_start();
 
 include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/models/debug.php');
@@ -34,45 +35,45 @@ if(1)
 				$active = "act" . md5(mt_rand());
 				if ( $userid = insert_user($username, md5(trim($_POST['userpass_1'])), $_SERVER['REMOTE_ADDR'], $_SERVER['REMOTE_PORT'], $_SERVER['HTTP_USER_AGENT'], $active))
 				{
-					$url     = "" . $_SERVER['SERVER_NAME'] . "contacts/models/user/activation.php?id=". $userid ."&user=" . $username . "&active=" . $active . "";
+					$url     = "" . $_SERVER['SERVER_NAME'] . "contacts/models/user/activation.php?id=". $userid . "&user=" . $username . "&active=" . $active . "";
 					$message = "<h2>Thank you " . $username . " for registering!</h2><hr /><br /><p>Your account is not activated, 
 					To activate click on the following link: </p>" . $url . "<div><sub>Mycnts © 2014<sub></div>";
 					if (mail_utf8($_POST['useremail_1'], "Account validation MyCnts", $message))
 					{
-						$_SESSION['success'] = "<b>register.php:</b><br>Thanks for signing up! We've sent an email account activation at: <b>'" . $username . "'</b>";
+						$_SESSION['success'] = ($debug ? "<b>register.php:</b><br />" : "") . "Thanks for signing up! We've sent an email account activation at: <b>'" . $username . "'</b>";
 					}
 					else 
 					{
-						$_SESSION['error'] = "<b>register.php:</b><br>Ooops! Something went wrong with sending e-mail!";
+						$_SESSION['error'] = ($debug ? "<b>register.php:</b><br />" : "") . "Ooops! Something went wrong with sending e-mail!";
 					}
 				}
 				else
 				{
 					$failure = 1;
-					$_SESSION['error'] = "<b>register.php:</b><br>Ooops! The registration process failed!";
+					$_SESSION['error'] = ($debug ? "<b>register.php:</b><br />" : "") . "Ooops! The registration process failed!";
 				}
 			}
 			else
 			{
 				$failure = 1;
-				$_SESSION['warning'] = "<b>register.php:</b><br>The user with e-mail '" . $username . "' already exists, try again with another username!";
+				$_SESSION['warning'] = ($debug ? "<b>register.php:</b><br />" : "") . "The user with e-mail '" . $username . "' already exists, try again with another username!";
 			}
 		}
 		else
 		{
 			$failure = 1;
-			$_SESSION['warning'] = "<b>register.php:</b><br>Incorrect keying in confirmation fields, try again!";
+			$_SESSION['warning'] = ($debug ? "<b>register.php:</b><br />" : "") . "Incorrect keying in confirmation fields, try again!";
 		}
 	}
 	else
 	{
 		$failure = 1;
-		$_SESSION['warning'] = "<b>register.php:</b><br>You must fill in all required fields!";
+		$_SESSION['warning'] = ($debug ? "<b>register.php:</b><br />" : "") . "You must fill in all required fields!";
 	}
 }
 else
 {
-	$_SESSION['warning'] = "<b>register.php:</b><br>This project is not complete yet! User registration  is temporarily disabled.";
+	$_SESSION['warning'] = ($debug ? "<b>register.php:</b><br />" : "") . "This project is not complete yet! User registration  is temporarily disabled.";
 }
 
 redirect($failure ? "?p=register" : "?p=login", $debug);

@@ -5,7 +5,7 @@ function alert( $message, $type = "Notice" ){
 			<div class="alert_icon">
 				<img src="<?php echo rootPath( "views/icons/". $type .".png") ?>" alt="Alert icon" height="24" />
 			</div>
-			<div class="alert_content"><?php echo "<b>There is ". $type ." message here:</b> <pre class=\"alert\">". (!empty($message) ? $message : "alerts.php: Empty message!" ) . "</pre>"; ?></div>
+			<div class="alert_content"><?php echo "<b>". $type ." message:</b> <pre class=\"alert\">". (!empty($message) ? $message : "alerts.php: Empty message!" ) . "</pre>"; ?></div>
 		</div>
 	<?php
 }

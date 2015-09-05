@@ -7,6 +7,7 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/models/plugins/SqlFormatter.ph
 include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/models/debug.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/Contacts/models/model.php');
 
+session_name("CntId");
 session_start();
 
 if ( isset($_GET['id']) && isset($_GET['user']) && isset($_GET['active']))

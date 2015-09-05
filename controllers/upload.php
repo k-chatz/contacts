@@ -63,7 +63,7 @@ if(isset($_FILES)){
 			}
 	}
 	else{
-		$_SESSION['error'] = "<b>upload.php:</b><br>There was a problem during the uploading file!";
+		$_SESSION['error'] = ($debug ? "<b>upload.php:</b><br />" : "") . "The file was rejected because: " . codeToMessage($error);
 	}
 }
 ?>

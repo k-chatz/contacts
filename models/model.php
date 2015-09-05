@@ -32,13 +32,11 @@ function get_string_of_streets_from_address($address){
 		return NULL;
 }
 
-function get_string_of_full_address($address)
-{
+function get_string_of_full_address($address){
 	return "" . get_string_of_streets_from_address($address) . ", " . $address['location'] . ", " . $address['city'] . ", " . $address['region'] . ", " . $address['country'] . ", " . $address['comments'] . "";
 }
 
-function mail_utf8($to, $subject = '(No subject)', $message = "")
-{
+function mail_utf8($to, $subject = '(No subject)', $message = ""){
 	$headers = "MIME-Version: 1.0" . "\r\n";
 	$headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
 	$headers .= "To: <" . $to . ">" . "\r\n";
@@ -57,17 +55,16 @@ function client_ip(){
     return $ip;
 }
 
-function removeDir($dir){
+function removeDir($dir, $debug = 0){
 	//dump($dir);
 	/*From: http://stackoverflow.com/questions/3349753/delete-directory-with-files-in-it*/
 	$it = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
 	$files = new RecursiveIteratorIterator($it, RecursiveIteratorIterator::CHILD_FIRST);
 	foreach($files as $file) {
+	    dump($file,"Remove dir", $debug);
 	    if ($file->isDir()){
-	    	//dump($file,"Remove dir");
 	        rmdir($file->getRealPath());
 	    } else {
-	    	//dump($file,"Remove file");
 	        unlink($file->getRealPath());
 	    }
 	}

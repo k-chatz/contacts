@@ -12,6 +12,16 @@ function insert_user($username, $userpass, $REMOTE_ADDR, $REMOTE_PORT, $HTTP_USE
 		return NULL;
 }
 
+function insertOption($userid, $optionName, $optionValue = NULL){
+	if($userid && $optionName){
+		$response = Query("INSERT INTO `contacts`.`settings` (`userid`, `option_name`, `option_value`) 
+			VALUES (". $userid .", '". $optionName ."', '". $optionValue ."');", debug_backtrace());
+		return errorChecking($response);
+	}
+	else
+		return NULL;
+}
+
 function insert_log($userid = 0, $REMOTE_ADDR, $REMOTE_PORT, $HTTP_USER_AGENT, $REQUEST_URI) {
 	if ($userid) {
 		Query("INSERT INTO logs(userid,REMOTE_ADDR,REMOTE_PORT,HTTP_USER_AGENT,REQUEST_URI) VALUES(" . $userid . ",'" . $REMOTE_ADDR . "','" . $REMOTE_PORT . "','" . $HTTP_USER_AGENT . "','" . $REQUEST_URI . "')", debug_backtrace());

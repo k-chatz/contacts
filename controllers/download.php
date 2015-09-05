@@ -11,7 +11,7 @@ if( NULL != $records = downloadFile($userid, $fileId, $fileName)){
 
 	/*Open binary file for write at user temp folder*/
 	if ( !$fp = fopen($file, "wb")){
-		$_SESSION['error'] = "<b>download.php:</b><br>Err:: Cannot open file ($file)";
+		$_SESSION['error'] = ($debug ? "<b>download.php:</b><br />" : "") . "Err:: Cannot open file ($file)";
 	}
 	else{
 
@@ -31,13 +31,13 @@ if( NULL != $records = downloadFile($userid, $fileId, $fileName)){
 			}
 		}
 		else{
-			$_SESSION['success'] = "<b>download.php:</b><br>The file '" . $records[0]['name'] . "' is ready for <a target=\"_blank\" href=\"views/user/temp/". md5($userid) ."/". $records[0]['name'] ."\" title=\"File\">download</a>!";
+			$_SESSION['error'] = ($debug ? "<b>download.php:</b><br />" : "") . "Err:: Decode failure!";
 		}
 	}
 	fclose($fp);
 }
 else{
-	$_SESSION['error'] = "<b>download.php:</b><br>Err:: Could not find the requested file!";
+	$_SESSION['error'] = ($debug ? "<b>download.php:</b><br />" : "") . "Err:: Could not find the requested file!";
 }
 
 ?>

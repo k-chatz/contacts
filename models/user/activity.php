@@ -24,25 +24,26 @@ function logout(){
 	unset($_SESSION['becomeLogin']);
 }
 
+$confid	= isset($_GET['cnf']) ? $_GET['cnf'] : 0;
+$userid = isset($_SESSION['userid']) ? $_SESSION['userid'] : 0;
+$timeout = isset($_SESSION['timeout']) ? $_SESSION['timeout'] : 0;
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : 0;
+$isLoggedIn	= isset($_SESSION['isLoggedIn']) ? $_SESSION['isLoggedIn'] : 0;
+$becomeLogin = isset($_SESSION['becomeLogin']) ? $_SESSION['becomeLogin'] : 0;
+
 $ip = client_ip();
 
-if($becomeLogin)
-{
+if($becomeLogin){
 	unset($_SESSION['becomeLogin']);
-	$_SESSION['timeout'] = get_option( "timeout", $userid);
+	$timeout = get_option( "timeout", $userid);
+	$_SESSION['timeout'] = $timeout ? $timeout : 1;
 	//dump($_SESSION,"SESSION");
 }
-else
-{
-	if($isLoggedIn)
-	{
-		if( NULL == $Records = user_is_online( $userid , $username , trim($confid) , $ip , $_SERVER['HTTP_USER_AGENT'] , $timeout ))
-		{
-			unset($_SESSION['userid']);
-			unset($_SESSION['timeout']);
-			unset($_SESSION['username']);
-			unset($_SESSION['isLoggedIn']);
-			unset($_SESSION['becomeLogin']);
+else{
+	if($isLoggedIn){
+		if( NULL == $Records = user_is_online( $userid , $username , trim($confid) , $ip , $_SERVER['HTTP_USER_AGENT'] , $timeout )){
+			/*Logout user*/
+			logout();
 
 			$isLoggedIn = 0;
 			$userid		= 0;

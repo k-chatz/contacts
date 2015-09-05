@@ -9,6 +9,7 @@ ini_set('display_errors', 1);
 
 ob_start();
 
+session_name("CntId");
 session_start();
 
 include_once ($_SERVER['DOCUMENT_ROOT'] . '/Contacts/models/plugins/Mobile_Detect.php');
@@ -20,15 +21,15 @@ include_once ($_SERVER['DOCUMENT_ROOT'] . '/Contacts/models/model.php');
 include_once ($_SERVER['DOCUMENT_ROOT'] . '/Contacts/views/alerts.php');
 
 // Show or hide debugging informations.
-
 if (isset($_GET['debug'])) $_SESSION['debug'] = $_GET['debug'];
-$debug = (isset($_SESSION['debug']) && $_SESSION['debug'] == "on") ? 1 : 0;
+	$debug = (isset($_SESSION['debug']) && $_SESSION['debug'] == "on") ? 1 : 0;
+
 /*Device check*/
 $detect = new Mobile_Detect();
 
 if ($detect->isMobile() || $debug) $isMobile = true;
 else {
-	$_SESSION['notice'] = "<b>index.php:</b><br />This page is only for mobile devices. To continue try to open this page with a mobile device!";
+	$_SESSION['notice'] = "This page is only for mobile devices. To continue try to open this page with a mobile device!";
 	$isMobile = false;
 }
 
